@@ -30,9 +30,9 @@ const Menu = ({ name }) => {
   }
 
   return (
-    <div className="flex">
+    <ul>
       <MenuLinks links={menu.links} level={0} />
-    </div>
+    </ul>
   )
 }
 
