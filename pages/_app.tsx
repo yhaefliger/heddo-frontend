@@ -4,12 +4,13 @@ import { AppProps } from 'next/app'
 import '../styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const { global, ...passThroughProps } = pageProps
+
   const componentProps = {
-    ...passThruProps,
-    page: pageProps.page
+    ...passThroughProps
   }
   return (
-    <AppProvider value={pageProps.global}>
+    <AppProvider value={global}>
       <Component {...componentProps} />
     </AppProvider>
   )

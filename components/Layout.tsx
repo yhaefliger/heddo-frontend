@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import Logo from "./Logo"
+import Menu from "./Menu"
 
 //TODO: define page and global props
 type Props = {
@@ -12,8 +13,9 @@ const Layout = ({ children, page }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <header>
-        <div className="container mx-auto">
+        <div className="container mx-auto flex items-center justify-between">
           <Logo className="h-24" />
+          <Menu name="main" />
         </div>
       </header>
       <main className="flex flex-col flex-1">

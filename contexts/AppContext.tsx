@@ -1,12 +1,12 @@
 import { createContext, useContext } from "react"
 
 type appProviderType = {
-  menu: any
+  menus: any
   settings: any
 }
 
 const appProviderDefaultValues: appProviderType = {
-  menu: null,
+  menus: null,
   settings: null,
 }
 
