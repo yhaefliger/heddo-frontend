@@ -1,15 +1,14 @@
+import { Node } from "@/lib/page"
 import { ReactNode } from "react"
 import Logo from "./Logo"
 import Menu from "./Menu"
 
-//TODO: define page and global props
 type Props = {
   children?: ReactNode
-  page: any,
+  node: Node,
 }
 
-const Layout = ({ children, page }: Props) => {
-  console.log(page)
+const Layout = ({ children, node }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <header>

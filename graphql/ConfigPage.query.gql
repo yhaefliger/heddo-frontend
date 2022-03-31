@@ -1,0 +1,8 @@
+query ConfigPage($type: String!) {
+  configPagesQuery(filter:{conditions:{operator: EQUAL, field: "type", value: [$type]}}){
+    entities {
+      # Fields fragments depending on ConfigPage type
+      ...ConfigPageSettingsFields
+    }
+  }
+}

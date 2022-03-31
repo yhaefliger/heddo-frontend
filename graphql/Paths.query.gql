@@ -1,0 +1,13 @@
+query Paths {
+  nodeQuery {
+    entities {
+      entityLabel
+      entityType
+      entityBundle
+      entityUrl {
+        path
+        routed
+      }
+    }
+  }
+}

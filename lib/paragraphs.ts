@@ -20,15 +20,17 @@ function nest(items, id = null) {
 }
 
 export function buildSections(field) {
-  let sections = field.map(section => {
-    let settings = {}
+  let sections = field
+  .filter(section => section.entity)
+  .map(section => {
     let parent_id, layout = null
     let region = 'default'
     let type = 'paragraph'
 
     //process settings
-    if (section.entity?.behaviorSettings) {
-      settings = unserialize(section.entity.behaviorSettings)
+    const { behaviorSettings, ...sectionData } = section.entity
+    if (behaviorSettings) {
+      const settings = unserialize(behaviorSettings)
       if (settings.layout_paragraphs){
         parent_id = settings.layout_paragraphs.parent_uuid ? settings.layout_paragraphs.parent_uuid : null
         region = settings.layout_paragraphs.region ? settings.layout_paragraphs.region : 'default'
@@ -39,8 +41,7 @@ export function buildSections(field) {
         }
       }
     }
-
-    return { ...section.entity, behaviorSettings: null, parent_id, type, layout, region }
+    return { ...sectionData,  parent_id, type, layout, region }
   })
 
   return nest(sections)

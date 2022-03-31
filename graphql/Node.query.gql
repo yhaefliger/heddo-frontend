@@ -1,0 +1,10 @@
+  query NodeByPath($path: String!) {
+      route(path: $path) {
+        ...on EntityCanonicalUrl {
+          entity{
+            # Fields fragments depending on node type
+            ... NodePageFields
+          }
+        }
+      }
+    }
