@@ -14,9 +14,9 @@ export type ParagraphContent = {
 
 const groupParagraphs = (items) => {
   return items.reduce((item, acc) => {
-    (item[acc['region']] = item[acc['region']] || []).push(acc);
-    return item;
-  }, {});
+    (item[acc['region']] = item[acc['region']] || []).push(acc)
+    return item
+  }, {})
 }
 
 const nestParagraphs = (items, id = null) => {

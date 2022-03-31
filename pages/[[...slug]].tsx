@@ -1,12 +1,14 @@
 import Layout from '@/components/Layout'
 import { getPaths } from '@/lib/utils'
-import getPageData, { PageContext } from '@/lib/page'
+import getPageData, { NodePage, PageContext } from '@/lib/page'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
+type Props = {
+  node: NodePage
+}
 
-
-const Page = ({ node }) => {
+const Page = ({ node }: Props) => {
   return (
     <Layout node={node}>
       <Head>

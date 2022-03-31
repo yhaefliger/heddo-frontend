@@ -1,7 +1,7 @@
 import requester from "@/graphql/client"
 
 export const getPaths = async () => {
-  const data = await requester.Paths();
+  const data = await requester.Paths()
   // return paths with slug params in nextjs form
   const paths = data.nodeQuery?.entities ? data.nodeQuery.entities
     .filter(entity => {
@@ -19,6 +19,6 @@ export const getPaths = async () => {
           params: { slug: path.split("/") }
         }
       }
-    }) : [];
+    }) : []
   return paths
 }
