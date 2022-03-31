@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout'
 import { getPaths } from '@/lib/utils'
-import { getPageData, PageContext } from '@/lib/page'
+import getPageData, { PageContext } from '@/lib/page'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 

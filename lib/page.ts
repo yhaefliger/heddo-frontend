@@ -1,11 +1,13 @@
 import { NextPageContext } from "next"
 import { NodePageFieldsFragment } from "@/graphql/generated/schema"
 import requester from "@/graphql/client"
-import { getGlobalData } from "./global"
-import { buildSections } from "./paragraphs"
+import getGlobalData from "./global"
+import buildSections, { ParagraphContent } from "./paragraphs"
 
 export type NodeTypes = 'page'
-export type Node = NodePageFieldsFragment
+export type NodePage = NodePageFieldsFragment & { content?: ParagraphContent[] }
+// union of possibles node types ex: NodePage | NodeBlog | NodeProduct
+export type Node =  NodePage
 
 export interface PageContext extends NextPageContext {
   params: {
@@ -13,23 +15,33 @@ export interface PageContext extends NextPageContext {
   }
 }
 
-export const getPageData = async (context: PageContext, type: NodeTypes) => {
-  //Node Page
+const getPageData = async (context: PageContext, type: NodeTypes) => {
+  let node: Node;
+
   const path = context.params.slug ? `/${context.params.slug.join('/')}` : process.env.DRUPAL_HOME
-  let node: Node = {}
 
   const data = await requester.NodeByPath({ path })
+
   if(data.route?.entity){
-    if(type == 'page') {
-      node = data.route.entity as NodePageFieldsFragment;
-      node = { ...node, fieldContent: buildSections(node.fieldContent)}
+    switch (type) {
+      //Node Page
+      case 'page':
+        const { fieldContent, ...nodeFields } = data.route.entity;
+        node = { ...nodeFields, content: buildSections(fieldContent)} as NodePage
+        break;
+
+      default:
+        node = data.route.entity
+        break;
     }
   }
 
   const global = await getGlobalData(context)
 
   return {
-    node,
+    node: node || {},
     global
    }
 }
+
+export default getPageData

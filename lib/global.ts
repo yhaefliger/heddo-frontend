@@ -1,6 +1,6 @@
 import requester from "@/graphql/client"
 
-export async function getGlobalData(context) {
+const getGlobalData = async (context) => {
   const [mainMenu, settings] = await Promise.all([
     requester.Menu({ name: "main" }),
     requester.ConfigPage({ type: "settings" })
@@ -13,3 +13,5 @@ export async function getGlobalData(context) {
     settings: settings.configPagesQuery?.entities?.length > 0 ? settings.configPagesQuery.entities[0] : {}
   }
 }
+
+export default getGlobalData
