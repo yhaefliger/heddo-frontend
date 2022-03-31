@@ -1,4 +1,4 @@
-import AppProvider from 'contexts/AppContext'
+import AppProvider from '@/components/AppContext'
 import { AppProps } from 'next/app'
 
 import '../styles/globals.css'

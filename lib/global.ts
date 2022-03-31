@@ -1,11 +1,11 @@
-import requester from "@/graphql/client"
+import requester from "@/lib/client"
 import { ConfigPageSettingsFieldsFragment, Menu } from "@/graphql/generated/schema"
 import { PageContext } from "./page"
 
 export type GlobalData = {
   menus: {
     main: Menu | null
-  },
+  } | null,
   settings: ConfigPageSettingsFieldsFragment | null
 }
 

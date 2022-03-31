@@ -1,6 +1,6 @@
 import { NextPageContext } from "next"
 import { NodePageFieldsFragment } from "@/graphql/generated/schema"
-import requester from "@/graphql/client"
+import requester from "@/lib/client"
 import getGlobalData from "./global"
 import buildSections, { ParagraphContent } from "./paragraphs"
 

@@ -1,9 +1,8 @@
+import { GlobalData } from "@/lib/global"
 import { createContext, useContext } from "react"
 
-type appProviderType = {
-  menus: any
-  settings: any
-}
+// default take all global data
+type appProviderType = GlobalData
 
 const appProviderDefaultValues: appProviderType = {
   menus: null,

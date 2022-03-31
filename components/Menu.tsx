@@ -1,4 +1,4 @@
-import { useAppContext } from "contexts/AppContext"
+import { useAppContext } from "@/components/AppContext"
 import { useRouter } from "next/router"
 
 

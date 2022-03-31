@@ -1,4 +1,4 @@
-import requester from "@/graphql/client"
+import requester from "@/lib/client"
 
 export const getPaths = async () => {
   const data = await requester.Paths()

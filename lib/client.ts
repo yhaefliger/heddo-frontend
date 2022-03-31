@@ -1,6 +1,6 @@
 import { ApolloClient, QueryOptions, MutationOptions, InMemoryCache } from '@apollo/client';
 import { DocumentNode } from 'graphql';
-import { getSdk, Requester } from './generated/schema';
+import { getSdk, Requester } from '../graphql/generated/schema';
 
 export type ApolloRequesterOptions<V, R> =
 | Omit<QueryOptions<V>, 'variables' | 'query'>
