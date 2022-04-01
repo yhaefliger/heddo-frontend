@@ -1,7 +1,7 @@
 import { NextPageContext } from "next"
 import { NodePageFieldsFragment } from "@/graphql/generated/schema"
-import requester from "@/lib/client"
-import getGlobalData from "./global"
+import requester from "@/lib/api"
+import getGlobalData, { GlobalData } from "./global"
 import buildSections, { ParagraphContent } from "./paragraphs"
 
 export type NodeTypes = 'page'
@@ -15,7 +15,12 @@ export interface PageContext extends NextPageContext {
   }
 }
 
-const getPageData = async (context: PageContext, type: NodeTypes) => {
+export type PageProps = {
+  node: Node,
+  global: GlobalData
+}
+
+const getPageData = async (context: PageContext, type: NodeTypes): Promise<PageProps> => {
   let node: Node;
 
   const path = context.params.slug ? `/${context.params.slug.join('/')}` : process.env.DRUPAL_HOME

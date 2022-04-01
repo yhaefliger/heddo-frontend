@@ -2,14 +2,12 @@ import { GlobalData } from "@/lib/global"
 import { createContext, useContext } from "react"
 
 // default take all global data
-type appProviderType = GlobalData
-
-const appProviderDefaultValues: appProviderType = {
+const appProviderDefaultValues: GlobalData = {
   menus: null,
   settings: null,
 }
 
-const AppContext = createContext<appProviderType>(appProviderDefaultValues)
+const AppContext = createContext<GlobalData>(appProviderDefaultValues)
 
 export const useAppContext = () => {
   return useContext(AppContext)
@@ -17,7 +15,7 @@ export const useAppContext = () => {
 
 type appProviderProps = {
   children: React.ReactNode,
-  value: appProviderType
+  value: GlobalData
 }
 
 const AppProvider = ({ children, value }: appProviderProps) => {

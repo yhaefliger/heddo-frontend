@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout'
+import Layout from '@/components/layout'
 import { getPaths } from '@/lib/utils'
-import getPageData, { NodePage, PageContext } from '@/lib/page'
+import getPageData, { NodePage, PageContext, PageProps } from '@/lib/page'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (context: PageContext) => {
+export const getStaticProps: GetStaticProps<PageProps> = async (context: PageContext) => {
   const {node, global} = await getPageData(context, "page")
 
   return {

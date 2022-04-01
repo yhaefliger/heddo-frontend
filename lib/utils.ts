@@ -1,4 +1,4 @@
-import requester from "@/lib/client"
+import requester from "@/lib/api"
 
 export const getPaths = async () => {
   const data = await requester.Paths()

@@ -1,23 +1,24 @@
-import requester from "@/lib/client"
-import { ConfigPageSettingsFieldsFragment, Menu } from "@/graphql/generated/schema"
+import requester from "@/lib/api"
+import { ConfigPageSettingsFieldsFragment } from "@/graphql/generated/schema"
 import { PageContext } from "./page"
+import { AppMenu, getMenu } from "./menu"
 
 export type GlobalData = {
   menus: {
-    main: Menu | null
+    main: AppMenu | null
   } | null,
   settings: ConfigPageSettingsFieldsFragment | null
 }
 
 const getGlobalData = async (context: PageContext): Promise<GlobalData> => {
   const [mainMenu, settings] = await Promise.all([
-    requester.Menu({ name: "main" }),
+    getMenu("main"),
     requester.ConfigPage({ type: "settings" })
   ])
 
   return {
     menus: {
-      main: mainMenu.menuByName || null
+      main: mainMenu
     },
     settings: settings.configPagesQuery?.entities?.length > 0 ? settings.configPagesQuery.entities[0] as ConfigPageSettingsFieldsFragment : null
   }
