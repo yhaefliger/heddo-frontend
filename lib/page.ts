@@ -3,6 +3,7 @@ import { NodePageFieldsFragment } from "@/graphql/generated/schema"
 import requester from "@/lib/api"
 import getGlobalData, { GlobalData } from "./global"
 import buildSections, { ParagraphContent } from "./paragraphs"
+import { getPathFromContext } from "./utils"
 
 export type NodeTypes = 'page'
 export type NodePage = NodePageFieldsFragment & { content?: ParagraphContent[] }
@@ -23,8 +24,7 @@ export type PageProps = {
 const getPageData = async (context: PageContext, type: NodeTypes): Promise<PageProps> => {
   let node: Node;
 
-  const path = context.params.slug ? `/${context.params.slug.join('/')}` : process.env.DRUPAL_HOME
-
+  const path = getPathFromContext(context)
   const data = await requester.NodeByPath({ path })
 
   if(data.route?.entity){

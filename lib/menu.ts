@@ -1,16 +1,34 @@
-import { Menu } from "@/graphql/generated/schema"
+import { Menu, MenuLink } from "@/graphql/generated/schema"
 import requester from "./api"
 
-export type AppMenu = Menu & {
+export type AppMenuLink = MenuLink & {
   active?: boolean
-  hasChildren: boolean
+  childActive?: boolean
+  links?: AppMenuLink[]
 }
 
-export const getMenu = async (name: string): Promise<AppMenu> => {
+export type AppMenu = Menu & {
+  links?: AppMenuLink[]
+}
+
+export const setActiveLink = (links, path): AppMenuLink[] => {
+  return links.map(link => {
+    let childs, childActive = false;
+    let active = link.url.path === path
+    if(link.links) {
+      childs = setActiveLink(link.links, path)
+      childActive = childs.some(c => c.active)
+    }
+    const returnLink = { ...link, active, childActive }
+    return childs ? {...returnLink, links:childs} : returnLink
+  })
+}
+
+export const getMenu = async (name: string, path: string | null = null): Promise<AppMenu> => {
   const data = await requester.Menu({ name })
-  const menu = data.menuByName as AppMenu
-
-  //TODO: set active and haschildren properties
-
+  let menu = data.menuByName
+  if(path && menu.links) {
+    menu = { ...menu, links: setActiveLink(menu.links, path) }
+  }
   return menu
 }

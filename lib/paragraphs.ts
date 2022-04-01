@@ -1,12 +1,13 @@
 import { unserialize } from "php-serialize"
 
 export type ParagraphContent = {
-  id: boolean | string;
-  __typename: null | string;
-  parent_id: null | string;
-  type: string;
-  layout: null | string;
-  region: string;
+  __typename: null | string
+  id: boolean | string
+  parent_id: null | string
+  type: string
+  layout: null | string
+  region: string
+  fields: any
   children: {
     [region: string]: ParagraphContent[]
   }
@@ -22,15 +23,10 @@ const groupParagraphs = (items) => {
 const nestParagraphs = (items, id = null) => {
   return items
   .filter(item => item['parent_id'] === id)
-  .map(item => {
-    if(item.type == 'section') {
-      return  { ...item, children: groupParagraphs(nestParagraphs(items, item.id)) }
-    } else {
-      return item
-    }
-  })
+  .map(item => item.type == 'section' ? { ...item, children: groupParagraphs(nestParagraphs(items, item.id)) } : item)
 }
 
+// Restructure layout paragraph field with nesting and region grouping
 const buildSections = (field): ParagraphContent[] => {
   let sections = field
   .filter(section => section.entity)
@@ -54,7 +50,7 @@ const buildSections = (field): ParagraphContent[] => {
         }
       }
     }
-    return { id, __typename, parent_id, type, layout, region, fields }
+    return { __typename, id, parent_id, type, layout, region, fields }
   })
 
   return nestParagraphs(sections)

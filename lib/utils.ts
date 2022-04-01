@@ -1,9 +1,10 @@
 import requester from "@/lib/api"
+import { PageContext } from "./page"
 
 export const getPaths = async () => {
   const data = await requester.Paths()
   // return paths with slug params in nextjs form
-  const paths = data.nodeQuery?.entities ? data.nodeQuery.entities
+  return data.nodeQuery?.entities ? data.nodeQuery.entities
     .filter(entity => {
       return entity.entityUrl.routed
     })
@@ -20,5 +21,9 @@ export const getPaths = async () => {
         }
       }
     }) : []
-  return paths
+}
+
+
+export const getPathFromContext = (context: PageContext): string => {
+  return context.params.slug ? `/${context.params.slug.join('/')}` : process.env.DRUPAL_HOME
 }
