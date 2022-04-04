@@ -10,7 +10,6 @@
     "e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless",
     "codegen": "DOTENV_CONFIG_PATH=./.env.local graphql-codegen -r dotenv/config",
-    "prepare": "husky install",
     "prettier-check": "prettier --check .",
     "prettier-fix": "prettier --write ."
   },
@@ -42,7 +41,6 @@
     "cypress": "9.5.2",
     "eslint-config-next": "^12.1.4",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^7.0.0",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "start-server-and-test": "1.14.0",
