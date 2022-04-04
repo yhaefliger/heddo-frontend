@@ -1,3 +1,4 @@
 {
-  "graphql-config.dotEnvPath": "${workspaceFolder}/.env.local"
+  "graphql-config.dotEnvPath": "${workspaceFolder}/.env.local",
+  "vscode-graphql.trace.server": "on"
 }

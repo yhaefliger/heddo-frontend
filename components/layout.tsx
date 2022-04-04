@@ -1,4 +1,3 @@
-import { Node } from '@/lib/page'
 import { ReactNode } from 'react'
 import { useAppContext } from './app-context'
 import Logo from './logo'
@@ -6,11 +5,11 @@ import Menu from './menu'
 
 type Props = {
   children?: ReactNode
-  node: Node
 }
 
-const Layout = ({ children, node }: Props) => {
+const Layout = ({ children }: Props) => {
   const { settings, menus } = useAppContext()
+  console.log(settings)
   return (
     <div className="flex flex-col min-h-screen">
       <header>

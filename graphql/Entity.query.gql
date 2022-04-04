@@ -1,4 +1,4 @@
-query NodeByPath($path: String!) {
+query EntityByPath($path: String!) {
   route(path: $path) {
     ... on EntityCanonicalUrl {
       entity {

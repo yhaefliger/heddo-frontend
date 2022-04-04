@@ -3,12 +3,10 @@ import { NodePageFieldsFragment } from '@/graphql/generated/schema'
 import requester from '@/lib/api'
 import getGlobalData, { GlobalData } from './global'
 import buildSections, { ParagraphContent } from './paragraphs'
-import { getPathFromContext } from './utils'
 
-export type NodeTypes = 'page'
 export type NodePage = NodePageFieldsFragment & { content?: ParagraphContent[] }
 // union of possibles node types ex: NodePage | NodeBlog | NodeProduct
-export type Node = NodePage
+export type Entity = NodePage
 
 export interface PageContext extends NextPageContext {
   params: {
@@ -17,32 +15,36 @@ export interface PageContext extends NextPageContext {
 }
 
 export type PageProps = {
-  node: Node
+  entity: Entity
+  type: string
   global: GlobalData
 }
 
 const getPageData = async (
   context: PageContext,
-  type: NodeTypes
+  path: string
 ): Promise<PageProps> => {
-  let node: Node
 
-  const path = getPathFromContext(context)
-  const data = await requester.NodeByPath({ path })
+  let entity: Entity
+  let type = 'Unknown'
+
+  //const path = getPathFromContext(context)
+  const data = await requester.EntityByPath({ path })
 
   if (data.route?.entity) {
+    type = data.route.entity.__typename
     switch (type) {
       //Node Page
-      case 'page':
+      case 'NodePage':
         const { fieldContent, ...nodeFields } = data.route.entity
-        node = {
+        entity = {
           ...nodeFields,
           content: buildSections(fieldContent),
         } as NodePage
         break
 
       default:
-        node = data.route.entity
+        entity = data.route.entity
         break
     }
   }
@@ -50,7 +52,8 @@ const getPageData = async (
   const global = await getGlobalData(context)
 
   return {
-    node: node || {},
+    entity: entity || {},
+    type,
     global,
   }
 }

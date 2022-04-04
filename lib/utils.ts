@@ -13,7 +13,7 @@ export const getPaths = async () => {
           let path: string = entity.entityUrl?.path || '/'
           if (path == process.env.DRUPAL_HOME) {
             return {
-              params: { slug: false },
+              params: { slug: [] },
             }
           } else {
             path = path.startsWith('/') ? path.substring(1) : path

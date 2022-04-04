@@ -5,6 +5,7 @@ query ConfigPage($type: String!) {
     entities {
       # Fields fragments depending on ConfigPage type
       ...ConfigPageSettingsFields
+
     }
   }
 }
