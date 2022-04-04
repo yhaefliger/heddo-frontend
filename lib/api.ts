@@ -1,45 +1,50 @@
-import { ApolloClient, QueryOptions, MutationOptions, InMemoryCache } from '@apollo/client';
-import { DocumentNode } from 'graphql';
-import { getSdk, Requester } from '../graphql/generated/schema';
+import {
+  ApolloClient,
+  QueryOptions,
+  MutationOptions,
+  InMemoryCache,
+} from '@apollo/client'
+import { DocumentNode } from 'graphql'
+import { getSdk, Requester } from '../graphql/generated/schema'
 
 export type ApolloRequesterOptions<V, R> =
-| Omit<QueryOptions<V>, 'variables' | 'query'>
-| Omit<MutationOptions<R, V>, 'variables' | 'mutation'>;
+  | Omit<QueryOptions<V>, 'variables' | 'query'>
+  | Omit<MutationOptions<R, V>, 'variables' | 'mutation'>
 
 export const client = new ApolloClient({
   uri: process.env.DRUPAL_GRAPHQL_URL,
   cache: new InMemoryCache(),
-});
+})
 
-const validDocDefOps = ['mutation', 'query', 'subscription'];
+const validDocDefOps = ['mutation', 'query', 'subscription']
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getSdkApollo = <C>(client: ApolloClient<C>) => {
   const requester: Requester = async <R, V>(
     doc: DocumentNode,
     variables: V,
-    options?: ApolloRequesterOptions<V, R>,
+    options?: ApolloRequesterOptions<V, R>
   ): Promise<R> => {
     // Valid document should contain *single* query or mutation unless it's has a fragment
     if (
       doc.definitions.filter(
-        d =>
+        (d) =>
           d.kind === 'OperationDefinition' &&
-          validDocDefOps.includes(d.operation),
+          validDocDefOps.includes(d.operation)
       ).length !== 1
     ) {
       throw new Error(
-        'DocumentNode passed to Apollo Client must contain single query or mutation',
-      );
+        'DocumentNode passed to Apollo Client must contain single query or mutation'
+      )
     }
 
-    const definition = doc.definitions[0];
+    const definition = doc.definitions[0]
 
     // Valid document should contain *OperationDefinition*
     if (definition.kind !== 'OperationDefinition') {
       throw new Error(
-        'DocumentNode passed to Apollo Client must contain single query or mutation',
-      );
+        'DocumentNode passed to Apollo Client must contain single query or mutation'
+      )
     }
 
     switch (definition.operation) {
@@ -48,48 +53,48 @@ export const getSdkApollo = <C>(client: ApolloClient<C>) => {
           mutation: doc,
           variables,
           ...options,
-        });
+        })
 
         if (response.errors) {
-          console.log(response.errors);
+          console.log(response.errors)
           //throw new Error(response.errors[0]);
         }
 
         if (response.data === undefined || response.data === null) {
-          throw new Error('No data presented in the GraphQL response');
+          throw new Error('No data presented in the GraphQL response')
         }
 
-        return response.data;
+        return response.data
       }
       case 'query': {
         const response = await client.query<R, V>({
           query: doc,
           variables,
           ...options,
-        });
+        })
 
         if (response.errors) {
-          console.log(response.errors);
+          console.log(response.errors)
           //throw new Error(response.errors);
         }
 
         if (response.data === undefined || response.data === null) {
-          throw new Error('No data presented in the GraphQL response');
+          throw new Error('No data presented in the GraphQL response')
         }
 
-        return response.data;
+        return response.data
       }
       case 'subscription': {
         throw new Error(
-          'Subscription requests through SDK interface are not supported',
-        );
+          'Subscription requests through SDK interface are not supported'
+        )
       }
     }
-  };
+  }
 
-  return getSdk(requester);
+  return getSdk(requester)
 }
-export type Sdk = ReturnType<typeof getSdkApollo>;
+export type Sdk = ReturnType<typeof getSdkApollo>
 
-const requester = getSdkApollo(client);
-export default requester;
+const requester = getSdkApollo(client)
+export default requester

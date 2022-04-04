@@ -1,11 +1,11 @@
 fragment ConfigPageSettingsFields on ConfigPagesSettings {
-  header:fieldDefaultHeader {
-    entity{
-      ...on MediaImage{
-        image:fieldMediaImage {
-          url,
-          height,
-          width,
+  header: fieldDefaultHeader {
+    entity {
+      ... on MediaImage {
+        image: fieldMediaImage {
+          url
+          height
+          width
           alt
         }
       }

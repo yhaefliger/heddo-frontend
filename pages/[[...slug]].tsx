@@ -29,14 +29,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<PageProps> = async (context: PageContext) => {
-  const {node, global} = await getPageData(context, "page")
+export const getStaticProps: GetStaticProps<PageProps> = async (
+  context: PageContext
+) => {
+  const { node, global } = await getPageData(context, 'page')
 
   return {
     props: {
       node,
-      global
-    }
+      global,
+    },
   }
 }
 

@@ -1,5 +1,5 @@
-import { GlobalData } from "@/lib/global"
-import { createContext, useContext } from "react"
+import { GlobalData } from '@/lib/global'
+import { createContext, useContext } from 'react'
 
 // default take all global data
 const appProviderDefaultValues: GlobalData = {
@@ -14,16 +14,12 @@ export const useAppContext = () => {
 }
 
 type appProviderProps = {
-  children: React.ReactNode,
+  children: React.ReactNode
   value: GlobalData
 }
 
 const AppProvider = ({ children, value }: appProviderProps) => {
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  )
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
 
 export default AppProvider

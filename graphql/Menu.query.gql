@@ -1,6 +1,6 @@
-query Menu($name: String!)	{
-  menuByName(name: $name){
-    links{
+query Menu($name: String!) {
+  menuByName(name: $name) {
+    links {
       label
       description
       url {
@@ -10,7 +10,7 @@ query Menu($name: String!)	{
       links {
         label
         description
-        url{
+        url {
           path
           routed
         }

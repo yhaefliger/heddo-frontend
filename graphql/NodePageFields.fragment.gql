@@ -1,25 +1,25 @@
 fragment NodePageFields on NodePage {
-    fieldContent {
-      entity{
-        behaviorSettings
-        __typename
-        id:entityUuid
-        ...on ParagraphTitleText {
-          fieldTest
-        }
+  fieldContent {
+    entity {
+      behaviorSettings
+      __typename
+      id: entityUuid
+      ... on ParagraphTitleText {
+        fieldTest
       }
     }
-    fieldHeader {
-      entity{
-        ...on MediaImage{
-          fieldMediaImage{
-            derivative(style: THUMBNAIL){
-              url,
-              width,
-              height
-            }
+  }
+  fieldHeader {
+    entity {
+      ... on MediaImage {
+        fieldMediaImage {
+          derivative(style: THUMBNAIL) {
+            url
+            width
+            height
           }
         }
       }
     }
   }
+}

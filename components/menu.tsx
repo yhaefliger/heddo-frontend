@@ -1,8 +1,8 @@
-import { AppMenu, AppMenuLink } from "@/lib/menu"
-import Link from "next/link"
+import { AppMenu, AppMenuLink } from '@/lib/menu'
+import Link from 'next/link'
 
 type MenuLinkProps = {
-  links: AppMenu["links"]
+  links: AppMenu['links']
   level: number
 }
 
@@ -12,14 +12,14 @@ const MenuLinks = ({ links, level = 0 }: MenuLinkProps) => {
       {links.map((item: AppMenuLink, index) => {
         return (
           <li key={index}>
-              <Link href={item.url.path}>{item.label}</Link>
-              {!!item.links && !!item.links.length && (
-                <ul className={`menu-level-${level + 1}`}>
-                  <MenuLinks links={item.links} level={level + 1} />
-                </ul>
-              )}
-            </li>
-          )
+            <Link href={item.url.path}>{item.label}</Link>
+            {!!item.links && !!item.links.length && (
+              <ul className={`menu-level-${level + 1}`}>
+                <MenuLinks links={item.links} level={level + 1} />
+              </ul>
+            )}
+          </li>
+        )
       })}
     </>
   )

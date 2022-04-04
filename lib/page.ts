@@ -1,14 +1,14 @@
-import { NextPageContext } from "next"
-import { NodePageFieldsFragment } from "@/graphql/generated/schema"
-import requester from "@/lib/api"
-import getGlobalData, { GlobalData } from "./global"
-import buildSections, { ParagraphContent } from "./paragraphs"
-import { getPathFromContext } from "./utils"
+import { NextPageContext } from 'next'
+import { NodePageFieldsFragment } from '@/graphql/generated/schema'
+import requester from '@/lib/api'
+import getGlobalData, { GlobalData } from './global'
+import buildSections, { ParagraphContent } from './paragraphs'
+import { getPathFromContext } from './utils'
 
 export type NodeTypes = 'page'
 export type NodePage = NodePageFieldsFragment & { content?: ParagraphContent[] }
 // union of possibles node types ex: NodePage | NodeBlog | NodeProduct
-export type Node =  NodePage
+export type Node = NodePage
 
 export interface PageContext extends NextPageContext {
   params: {
@@ -17,27 +17,33 @@ export interface PageContext extends NextPageContext {
 }
 
 export type PageProps = {
-  node: Node,
+  node: Node
   global: GlobalData
 }
 
-const getPageData = async (context: PageContext, type: NodeTypes): Promise<PageProps> => {
-  let node: Node;
+const getPageData = async (
+  context: PageContext,
+  type: NodeTypes
+): Promise<PageProps> => {
+  let node: Node
 
   const path = getPathFromContext(context)
   const data = await requester.NodeByPath({ path })
 
-  if(data.route?.entity){
+  if (data.route?.entity) {
     switch (type) {
       //Node Page
       case 'page':
-        const { fieldContent, ...nodeFields } = data.route.entity;
-        node = { ...nodeFields, content: buildSections(fieldContent)} as NodePage
-        break;
+        const { fieldContent, ...nodeFields } = data.route.entity
+        node = {
+          ...nodeFields,
+          content: buildSections(fieldContent),
+        } as NodePage
+        break
 
       default:
         node = data.route.entity
-        break;
+        break
     }
   }
 
@@ -45,8 +51,8 @@ const getPageData = async (context: PageContext, type: NodeTypes): Promise<PageP
 
   return {
     node: node || {},
-    global
-   }
+    global,
+  }
 }
 
 export default getPageData

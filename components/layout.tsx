@@ -1,12 +1,12 @@
-import { Node } from "@/lib/page"
-import { ReactNode } from "react"
-import { useAppContext } from "./app-context"
-import Logo from "./logo"
-import Menu from "./menu"
+import { Node } from '@/lib/page'
+import { ReactNode } from 'react'
+import { useAppContext } from './app-context'
+import Logo from './logo'
+import Menu from './menu'
 
 type Props = {
   children?: ReactNode
-  node: Node,
+  node: Node
 }
 
 const Layout = ({ children, node }: Props) => {
@@ -19,9 +19,7 @@ const Layout = ({ children, node }: Props) => {
           {menus.main && <Menu menu={menus.main} />}
         </div>
       </header>
-      <main className="flex flex-col flex-1">
-        {children}
-      </main>
+      <main className="flex flex-col flex-1">{children}</main>
       <footer>
         <div className="text-center text-sm p-4">&copy; 2022 Heddo</div>
       </footer>

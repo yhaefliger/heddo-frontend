@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
   const { global, ...passThroughProps } = pageProps
 
   const componentProps = {
-    ...passThroughProps
+    ...passThroughProps,
   }
 
   return (
