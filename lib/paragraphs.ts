@@ -7,7 +7,9 @@ export type ParagraphContent = {
   type: string
   layout: null | string
   region: string
-  fields: any
+  fields: {
+    [field_name: string]: string | object
+  }
   children: {
     [region: string]: ParagraphContent[]
   }
@@ -47,6 +49,7 @@ const buildSections = (field): ParagraphContent[] => {
         behaviorSettings = null,
         ...fields
       } = section.entity
+      console.log(fields)
       if (behaviorSettings) {
         const settings = unserialize(behaviorSettings)
         // id is required for nesting

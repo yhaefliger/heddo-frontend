@@ -6,6 +6,10 @@ fragment NodePageFields on NodePage {
       id: entityUuid
       ... on ParagraphTitleText {
         fieldTest
+        fieldSubtitle{
+          format
+          processed
+        }
       }
     }
   }
