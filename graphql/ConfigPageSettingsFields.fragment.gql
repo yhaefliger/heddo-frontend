@@ -1,4 +1,8 @@
 fragment ConfigPageSettingsFields on ConfigPagesSettings {
+  fieldPrimaryColor{
+    color
+    opacity
+  }
   header: fieldDefaultHeader {
     entity {
       ... on MediaImage {

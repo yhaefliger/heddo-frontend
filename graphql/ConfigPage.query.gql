@@ -3,6 +3,7 @@ query ConfigPage($type: String!) {
     filter: { conditions: { operator: EQUAL, field: "type", value: [$type] } }
   ) {
     entities {
+      entityLabel
       # Fields fragments depending on ConfigPage type
       ...ConfigPageSettingsFields
 

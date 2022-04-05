@@ -37,8 +37,7 @@ const buildSections = (field): ParagraphContent[] => {
   const sections = field
     .filter((section) => section.entity)
     .map((section) => {
-      let parent_id,
-        layout = null
+      let parent_id, layout = null
       let region = 'default'
       let type = 'paragraph'
 
@@ -49,18 +48,20 @@ const buildSections = (field): ParagraphContent[] => {
         behaviorSettings = null,
         ...fields
       } = section.entity
-      console.log(fields)
+
       if (behaviorSettings) {
         const settings = unserialize(behaviorSettings)
         // id is required for nesting
         if (settings.layout_paragraphs && id) {
+          // determine region and parent
           parent_id = settings.layout_paragraphs.parent_uuid
             ? settings.layout_paragraphs.parent_uuid
             : null
           region = settings.layout_paragraphs.region
             ? settings.layout_paragraphs.region
             : 'default'
-          //if it has section param it is a section
+
+          // if it has layout param it is a section
           if (settings.layout_paragraphs.layout) {
             type = 'section'
             layout = settings.layout_paragraphs.layout

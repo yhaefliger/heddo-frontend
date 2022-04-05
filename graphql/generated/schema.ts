@@ -3995,9 +3995,9 @@ export type ConfigPageQueryVariables = Exact<{
 }>;
 
 
-export type ConfigPageQuery = { __typename?: 'Query', configPagesQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', header?: { __typename?: 'FieldConfigPagesSettingsFieldDefaultHeader', entity?: { __typename?: 'MediaImage', image?: { __typename?: 'FieldMediaImageFieldMediaImage', url?: string | null, height?: number | null, width?: number | null, alt?: string | null } | null } | null } | null } | { __typename?: 'CropFocalPoint' } | { __typename?: 'File' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage' } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null> | null } | null };
+export type ConfigPageQuery = { __typename?: 'Query', configPagesQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', entityLabel?: string | null, fieldPrimaryColor?: { __typename?: 'FieldConfigPagesSettingsFieldPrimaryColor', color?: string | null, opacity?: number | null } | null, header?: { __typename?: 'FieldConfigPagesSettingsFieldDefaultHeader', entity?: { __typename?: 'MediaImage', image?: { __typename?: 'FieldMediaImageFieldMediaImage', url?: string | null, height?: number | null, width?: number | null, alt?: string | null } | null } | null } | null } | { __typename?: 'CropFocalPoint', entityLabel?: string | null } | { __typename?: 'File', entityLabel?: string | null } | { __typename?: 'MediaImage', entityLabel?: string | null } | { __typename?: 'MenuLinkContentMenuLinkContent', entityLabel?: string | null } | { __typename?: 'NodePage', entityLabel?: string | null } | { __typename?: 'ParagraphContainerSimple', entityLabel?: string | null } | { __typename?: 'ParagraphGallery', entityLabel?: string | null } | { __typename?: 'ParagraphTitleText', entityLabel?: string | null } | { __typename?: 'PathAlias', entityLabel?: string | null } | { __typename?: 'ShortcutDefault', entityLabel?: string | null } | { __typename?: 'UnexposedEntity', entityLabel?: string | null } | { __typename?: 'User', entityLabel?: string | null } | null> | null } | null };
 
-export type ConfigPageSettingsFieldsFragment = { __typename?: 'ConfigPagesSettings', header?: { __typename?: 'FieldConfigPagesSettingsFieldDefaultHeader', entity?: { __typename?: 'MediaImage', image?: { __typename?: 'FieldMediaImageFieldMediaImage', url?: string | null, height?: number | null, width?: number | null, alt?: string | null } | null } | null } | null };
+export type ConfigPageSettingsFieldsFragment = { __typename?: 'ConfigPagesSettings', fieldPrimaryColor?: { __typename?: 'FieldConfigPagesSettingsFieldPrimaryColor', color?: string | null, opacity?: number | null } | null, header?: { __typename?: 'FieldConfigPagesSettingsFieldDefaultHeader', entity?: { __typename?: 'MediaImage', image?: { __typename?: 'FieldMediaImageFieldMediaImage', url?: string | null, height?: number | null, width?: number | null, alt?: string | null } | null } | null } | null };
 
 export type EntityByPathQueryVariables = Exact<{
   path: Scalars['String'];
@@ -4022,6 +4022,10 @@ export type PathsQuery = { __typename?: 'Query', nodeQuery?: { __typename?: 'Ent
 
 export const ConfigPageSettingsFieldsFragmentDoc = gql`
     fragment ConfigPageSettingsFields on ConfigPagesSettings {
+  fieldPrimaryColor {
+    color
+    opacity
+  }
   header: fieldDefaultHeader {
     entity {
       ... on MediaImage {
@@ -4073,6 +4077,7 @@ export const ConfigPageDocument = gql`
     filter: {conditions: {operator: EQUAL, field: "type", value: [$type]}}
   ) {
     entities {
+      entityLabel
       ...ConfigPageSettingsFields
     }
   }

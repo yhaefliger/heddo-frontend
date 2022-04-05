@@ -48,7 +48,32 @@ export const getSdkApollo = <C>(client: ApolloClient<C>) => {
     }
 
     switch (definition.operation) {
+      case 'query': {
+        const response = await client.query<R, V>({
+          query: doc,
+          variables,
+          ...options,
+        })
+
+        if (response.errors || response.error) {
+          if(response.error) {
+            throw new Error(`Apollo query error: ${response.error.message}`);
+          } else if(response.errors){
+            const error = response.errors.map(e => e.message).join(',')
+            throw new Error(`Apollo query errors: ${error}`);
+          } else {
+            throw new Error(`Apollo query error`);
+          }
+        }
+
+        if (response.data === undefined || response.data === null) {
+          throw new Error('No data presented in the GraphQL response')
+        }
+
+        return response.data
+      }
       case 'mutation': {
+        /*
         const response = await client.mutate<R, V>({
           mutation: doc,
           variables,
@@ -65,24 +90,10 @@ export const getSdkApollo = <C>(client: ApolloClient<C>) => {
         }
 
         return response.data
-      }
-      case 'query': {
-        const response = await client.query<R, V>({
-          query: doc,
-          variables,
-          ...options,
-        })
-
-        if (response.errors) {
-          console.log(response.errors)
-          //throw new Error(response.errors);
-        }
-
-        if (response.data === undefined || response.data === null) {
-          throw new Error('No data presented in the GraphQL response')
-        }
-
-        return response.data
+        */
+        throw new Error(
+          'Mutations requests through SDK interface are not supported'
+        )
       }
       case 'subscription': {
         throw new Error(
