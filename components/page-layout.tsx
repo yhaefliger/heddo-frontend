@@ -8,7 +8,7 @@ type Props = {
   children?: ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+const PageLayout = ({ children }: Props) => {
   const { settings, menus } = useAppContext()
   const PrimaryColor = hexRgb(settings.fieldPrimaryColor?.color || '#1986ff')
   return (
@@ -34,4 +34,4 @@ const Layout = ({ children }: Props) => {
   )
 }
 
-export default Layout
+export default PageLayout
