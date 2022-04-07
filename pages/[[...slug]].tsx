@@ -10,7 +10,6 @@ interface PageParams extends URLSearchParams {
 }
 
 const Page = ({ entity }: PageProps) => {
-  //console.log(entity, type)
   return (
     <Layout>
       <Head>

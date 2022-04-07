@@ -10,14 +10,14 @@ export type ParagraphContent = {
   fields: {
     [field_name: string]: string | object
   }
-  children: {
+  regions: {
     [region: string]: ParagraphContent[]
   }
 }
 
 const groupParagraphs = (items) => {
   return items.reduce((item, acc) => {
-    ;(item[acc['region']] = item[acc['region']] || []).push(acc)
+    (item[acc['region']] = item[acc['region']] || []).push(acc)
     return item
   }, {})
 }
@@ -27,7 +27,7 @@ const nestParagraphs = (items, id = null) => {
     .filter((item) => item['parent_id'] === id)
     .map((item) =>
       item.type == 'section'
-        ? { ...item, children: groupParagraphs(nestParagraphs(items, item.id)) }
+        ? { ...item, regions: groupParagraphs(nestParagraphs(items, item.id)) }
         : item
     )
 }
@@ -64,7 +64,7 @@ const buildSections = (field): ParagraphContent[] => {
           // if it has layout param it is a section
           if (settings.layout_paragraphs.layout) {
             type = 'section'
-            layout = settings.layout_paragraphs.layout
+            layout = settings.layout_paragraphs.layout.replace('_', '-').toLowerCase()
           }
         }
       }

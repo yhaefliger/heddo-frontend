@@ -4004,7 +4004,7 @@ export type EntityByPathQueryVariables = Exact<{
 }>;
 
 
-export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename?: 'ConfigPagesSettings' } | { __typename?: 'CropFocalPoint' } | { __typename?: 'File' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphTitleText', fieldTest?: string | null, behaviorSettings?: string | null, id?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null } | { __typename?: 'ExternalUrl' } | null };
+export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename?: 'ConfigPagesSettings' } | { __typename?: 'CropFocalPoint' } | { __typename?: 'File' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, fieldTest?: string | null, id?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null } | { __typename?: 'ExternalUrl' } | null };
 
 export type MenuQueryVariables = Exact<{
   name: Scalars['String'];
@@ -4013,7 +4013,9 @@ export type MenuQueryVariables = Exact<{
 
 export type MenuQuery = { __typename?: 'Query', menuByName?: { __typename?: 'Menu', links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null, links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null } | null> | null } | null };
 
-export type NodePageFieldsFragment = { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphTitleText', fieldTest?: string | null, behaviorSettings?: string | null, id?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null };
+export type NodePageFieldsFragment = { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, id?: string | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, fieldTest?: string | null, id?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null };
+
+export type ParagraphTitleTextFragment = { __typename?: 'ParagraphTitleText', fieldTest?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null };
 
 export type PathsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4040,6 +4042,15 @@ export const ConfigPageSettingsFieldsFragmentDoc = gql`
   }
 }
     `;
+export const ParagraphTitleTextFragmentDoc = gql`
+    fragment ParagraphTitleText on ParagraphTitleText {
+  fieldTest
+  fieldSubtitle {
+    format
+    processed
+  }
+}
+    `;
 export const NodePageFieldsFragmentDoc = gql`
     fragment NodePageFields on NodePage {
   fieldContent {
@@ -4047,13 +4058,7 @@ export const NodePageFieldsFragmentDoc = gql`
       behaviorSettings
       __typename
       id: entityUuid
-      ... on ParagraphTitleText {
-        fieldTest
-        fieldSubtitle {
-          format
-          processed
-        }
-      }
+      ...ParagraphTitleText
     }
   }
   fieldHeader {
@@ -4070,7 +4075,7 @@ export const NodePageFieldsFragmentDoc = gql`
     }
   }
 }
-    `;
+    ${ParagraphTitleTextFragmentDoc}`;
 export const ConfigPageDocument = gql`
     query ConfigPage($type: String!) {
   configPagesQuery(

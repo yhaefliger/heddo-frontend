@@ -1,4 +1,4 @@
-import { Menu, MenuLink } from '@/graphql/generated/schema'
+import {  MenuLink, MenuQuery } from '@/graphql/generated/schema'
 import requester from './api'
 
 export type AppMenuLink = MenuLink & {
@@ -7,7 +7,7 @@ export type AppMenuLink = MenuLink & {
   links?: AppMenuLink[]
 }
 
-export type AppMenu = Menu & {
+export type AppMenu = MenuQuery["menuByName"] & {
   links?: AppMenuLink[]
 }
 

@@ -4,13 +4,7 @@ fragment NodePageFields on NodePage {
       behaviorSettings
       __typename
       id: entityUuid
-      ... on ParagraphTitleText {
-        fieldTest
-        fieldSubtitle{
-          format
-          processed
-        }
-      }
+      ...ParagraphTitleText
     }
   }
   fieldHeader {

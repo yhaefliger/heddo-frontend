@@ -1,0 +1,7 @@
+fragment ParagraphTitleText on ParagraphTitleText {
+  fieldTest
+  fieldSubtitle{
+    format
+    processed
+  }
+}

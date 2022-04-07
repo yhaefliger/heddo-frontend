@@ -6,7 +6,6 @@ query ConfigPage($type: String!) {
       entityLabel
       # Fields fragments depending on ConfigPage type
       ...ConfigPageSettingsFields
-
     }
   }
 }
