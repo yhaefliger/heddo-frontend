@@ -34,7 +34,7 @@ const LayoutTwoCol = ({ regions }: Props) => {
       )}
       {regions.bottom && (
         <div className="layout-region layout-region-bottom">
-          <Paragraphs paragraphs={regions.top} />
+          <Paragraphs paragraphs={regions.bottom} />
         </div>
       )}
     </div>

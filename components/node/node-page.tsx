@@ -6,7 +6,7 @@ export type Props = {
   children?: React.ReactNode
 }
 
-const Page = ({ entity }: Props) => {
+const NodePage = ({ entity }: Props) => {
   return (
     <div className="node-page">
       {entity.content && <Paragraphs paragraphs={entity.content} />}
@@ -14,4 +14,4 @@ const Page = ({ entity }: Props) => {
   )
 }
 
-export default Page
+export default NodePage

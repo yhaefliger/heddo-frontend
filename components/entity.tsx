@@ -1,9 +1,9 @@
 import { Entity } from '@/lib/page'
-import Page from './node/page'
+import NodePage from './node/node-page'
 
 // Drupal entities __typename to React components
 const EntitiesComponents = {
-  NodePage: Page,
+  NodePage: NodePage,
 }
 
 export type Props = {
