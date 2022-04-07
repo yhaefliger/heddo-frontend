@@ -1,5 +1,4 @@
 import requester from '@/lib/api'
-import { PageContext } from './page'
 
 export const getPaths = async () => {
   const data = await requester.Paths()
@@ -23,10 +22,4 @@ export const getPaths = async () => {
           }
         })
     : []
-}
-
-export const getPathFromContext = (context: PageContext): string => {
-  return context.params.slug
-    ? `/${context.params.slug.join('/')}`
-    : process.env.DRUPAL_HOME
 }

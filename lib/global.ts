@@ -1,8 +1,6 @@
 import requester from '@/lib/api'
 import { ConfigPageSettingsFieldsFragment } from '@/graphql/generated/schema'
-import { PageContext } from './page'
 import { AppMenu, getMenu } from './menu'
-import { getPathFromContext } from './utils'
 
 export type GlobalData = {
   menus: {
@@ -11,8 +9,7 @@ export type GlobalData = {
   settings: ConfigPageSettingsFieldsFragment | null
 }
 
-const getGlobalData = async (context: PageContext): Promise<GlobalData> => {
-  const path = getPathFromContext(context)
+const getGlobalData = async (path: string): Promise<GlobalData> => {
   const [mainMenu, settings] = await Promise.all([
     getMenu('main', path),
     requester.ConfigPage({ type: 'settings' }),

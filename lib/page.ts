@@ -48,7 +48,7 @@ const getPageData = async (
     }
   }
 
-  const global = await getGlobalData(context)
+  const global = await getGlobalData(path)
   return {
     entity: entity || {},
     global,
