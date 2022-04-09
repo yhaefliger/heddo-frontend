@@ -3,7 +3,8 @@ fragment NodePageFields on NodePage {
     entity {
       behaviorSettings
       __typename
-      id: entityUuid
+      uuid
+      id
       ...ParagraphTitleText
     }
   }

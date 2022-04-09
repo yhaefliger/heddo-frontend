@@ -20,6 +20,7 @@
     "@graphql-codegen/typescript-generic-sdk": "^2.3.7",
     "@graphql-codegen/typescript-operations": "^2.3.5",
     "@graphql-codegen/typescript-react-apollo": "^3.2.11",
+    "camelcase": "^6.3.0",
     "graphql": "^16.3.0",
     "graphql-config": "^4.2.0",
     "hex-rgb": "^5.0.0",

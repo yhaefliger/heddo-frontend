@@ -7,7 +7,7 @@ export type Props = {
   }
 }
 
-const LayoutOneCol = ({ regions }: Props) => {
+const LayoutOnecol = ({ regions }: Props) => {
   return (
     <div className="layout-onecol">
       {regions.content && <Paragraphs paragraphs={regions.content} />}
@@ -15,4 +15,4 @@ const LayoutOneCol = ({ regions }: Props) => {
   )
 }
 
-export default LayoutOneCol
+export default LayoutOnecol

@@ -1,6 +1,6 @@
 import { ParagraphContent } from '@/lib/paragraphs'
-import LayoutOneCol from './layouts/layout-onecol'
-import LayoutTwoCol from './layouts/layout-twocol'
+import LayoutOnecol from './layouts/layout-onecol'
+import LayoutTwocol from './layouts/layout-twocol'
 import ContainerSimple from './paragraph/paragraph-container-simple'
 import ParagraphTitleText from './paragraph/paragraph-title-text'
 
@@ -10,8 +10,8 @@ const ParagraphsComponents = {
 }
 
 const LayoutsComponents = {
-  'layout-onecol': LayoutOneCol,
-  'layout-twocol': LayoutTwoCol,
+  LayoutOnecol: LayoutOnecol,
+  LayoutTwocol: LayoutTwocol,
 }
 
 export type Props = {

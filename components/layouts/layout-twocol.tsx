@@ -10,7 +10,7 @@ export type Props = {
   }
 }
 
-const LayoutTwoCol = ({ regions }: Props) => {
+const LayoutTwocol = ({ regions }: Props) => {
   return (
     <div className="layout-twocol">
       {regions.top && (
@@ -41,4 +41,4 @@ const LayoutTwoCol = ({ regions }: Props) => {
   )
 }
 
-export default LayoutTwoCol
+export default LayoutTwocol
