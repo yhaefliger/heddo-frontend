@@ -41,7 +41,7 @@ const Fields = ({ fields, parent }: Props) => {
          * - Field
          */
         if (FieldsComponents[`${parentType}${key}`]) {
-          Component = FieldsComponents[`${parentType}-${key}`]
+          Component = FieldsComponents[`${parentType}${key}`]
         } else if (FieldsComponents[key]) {
           Component = FieldsComponents[key]
         }
