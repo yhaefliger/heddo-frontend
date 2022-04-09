@@ -1,11 +1,7 @@
-import { ParagraphContent } from '@/lib/paragraphs'
+import { ParagraphComponentProps } from '../paragraphs'
 
-export type Props = {
-  paragraph: ParagraphContent
-  children?: React.ReactNode
-}
-const ContainerSimple = ({ children }: Props) => {
+const ParagraphContainerSimple = ({ children }: ParagraphComponentProps) => {
   return <div className="container-simple container mx-auto">{children}</div>
 }
 
-export default ContainerSimple
+export default ParagraphContainerSimple

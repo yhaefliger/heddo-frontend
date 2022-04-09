@@ -1,10 +1,10 @@
-// TODO: implement default field display
-type Props = {
-  field: string | object
-}
+import { FieldComponentProps } from '../fields'
 
-const Field = ({ field }: Props) => {
-  return <div></div>
+const Field = ({ value }: FieldComponentProps) => {
+  if (typeof value === 'string') {
+    return <div> {value}</div>
+  }
+  return null
 }
 
 export default Field

@@ -1,11 +1,12 @@
 import { ParagraphContent } from '@/lib/paragraphs'
 import LayoutOnecol from './layouts/layout-onecol'
 import LayoutTwocol from './layouts/layout-twocol'
-import ContainerSimple from './paragraph/paragraph-container-simple'
+import ParagraphContainerSimple from './paragraph/paragraph-container-simple'
 import ParagraphTitleText from './paragraph/paragraph-title-text'
+import DefaultParagraph from './paragraph/default'
 
 const ParagraphsComponents = {
-  ParagraphContainerSimple: ContainerSimple,
+  ParagraphContainerSimple: ParagraphContainerSimple,
   ParagraphTitleText: ParagraphTitleText,
 }
 
@@ -14,17 +15,27 @@ const LayoutsComponents = {
   LayoutTwocol: LayoutTwocol,
 }
 
-export type Props = {
+/**
+ * Default field component props
+ */
+export type ParagraphComponentProps = {
+  settings: Partial<ParagraphContent>
+  fields: ParagraphContent['fields']
+  children?: React.ReactNode
+}
+
+type Props = {
   paragraphs: ParagraphContent[]
   children?: React.ReactNode
 }
 
 const Paragraph = ({ paragraph }: { paragraph: ParagraphContent }) => {
   if ('__typename' in paragraph) {
-    const ParagraphComponent = ParagraphsComponents[paragraph.__typename]
-    if (!ParagraphComponent) {
-      console.log(`No paragraph component for ${paragraph.__typename}`)
-      return null
+    const { fields, ...settings } = paragraph
+
+    let ParagraphComponent = DefaultParagraph
+    if (ParagraphsComponents[paragraph.__typename]) {
+      ParagraphComponent = ParagraphsComponents[paragraph.__typename]
     }
 
     // layout render
@@ -35,12 +46,12 @@ const Paragraph = ({ paragraph }: { paragraph: ParagraphContent }) => {
     ) {
       const LayoutComponent = LayoutsComponents[paragraph.layout]
       return (
-        <ParagraphComponent paragraph={paragraph}>
+        <ParagraphComponent fields={fields} settings={settings}>
           <LayoutComponent regions={paragraph.regions} />
         </ParagraphComponent>
       )
     } else {
-      return <ParagraphComponent paragraph={paragraph} />
+      return <ParagraphComponent fields={fields} settings={settings} />
     }
   }
   return null

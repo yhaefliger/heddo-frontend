@@ -1,19 +1,25 @@
 import { ParagraphTitleTextFragment } from '@/graphql/generated/schema'
-import { ParagraphContent } from '@/lib/paragraphs'
+import Fields from '../fields'
+import { ParagraphComponentProps } from '../paragraphs'
 
-type Paragraph = {
+type Props = {
   fields: ParagraphTitleTextFragment
-  paragraphData: Partial<ParagraphContent>
-}
-export type Props = {
-  paragraph: Paragraph
-  children?: React.ReactNode
-}
+} & ParagraphComponentProps
 
-const ParagraphTitleText = ({ paragraph }: Props) => {
-  const { fields } = paragraph
+const ParagraphTitleText = ({ fields, settings }: Props) => {
   const { fieldTest: title, ...remainingFields } = fields
-  return <div className="paragraph-title-text">{title && <h1>{title}</h1>}</div>
+
+  return (
+    <div className="paragraph-title-text">
+      {title && <h1>{title}</h1>}
+      {remainingFields && (
+        <Fields
+          fields={remainingFields}
+          parent={{ type: settings.__typename, id: settings.id }}
+        />
+      )}
+    </div>
+  )
 }
 
 export default ParagraphTitleText
