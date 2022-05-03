@@ -3,13 +3,14 @@ import {  EntityByPathQuery, NodePageFieldsFragment } from '@/graphql/generated/
 import requester from '@/lib/api'
 import getGlobalData, { GlobalData } from './global'
 import buildSections, { ParagraphContent } from './paragraphs'
+import buildMetatags, { Metatags } from './metatags'
 
-// Custom modified entities
-export type NodePage = NodePageFieldsFragment & { content?: ParagraphContent[] }
 // Union of possible entities returned by query
 export type QueryEntity = NonNullable<Exclude<EntityByPathQuery["route"], { __typename?: 'DefaultInternalUrl' } | { __typename?: 'ExternalUrl' }>>["entity"]
+// Custom modified entities
+export type NodePage = QueryEntity & NodePageFieldsFragment & { content?: ParagraphContent[] }
 // Final union of transformed entities and default query returned entities
-export type Entity = NodePage | QueryEntity
+export type Entity = (NodePage | QueryEntity) & { metatags?: Metatags }
 
 export interface PageContext extends NextPageContext {
   params: {
@@ -31,19 +32,28 @@ const getPageData = async (
 
   //const path = getPathFromContext(context)
   const data = await requester.EntityByPath({ path })
+
   if (data.route?.__typename == 'EntityCanonicalUrl' && data.route.entity) {
+    entity = data.route.entity as QueryEntity
+
+    //transform entity metatags
+    if(entity.entityMetatags){
+      const { entityMetatags, ...entitydata } = entity
+      entity = {
+        ...entitydata,
+        metatags: buildMetatags(entityMetatags),
+      }
+    }
+
+    //nodes specific fields transformation
     switch (data.route.entity.__typename) {
       // Customised node page entity
       case 'NodePage':
-        const { fieldContent, ...nodeFields } = data.route.entity
+        const { fieldContent, ...nodeFields } = entity as NodePage
         entity = {
           ...nodeFields,
           content: buildSections(fieldContent),
         } as NodePage
-        break
-
-      default:
-        entity = data.route.entity
         break
     }
   }

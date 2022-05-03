@@ -16,7 +16,7 @@ const PageLayout = ({ children }: Props) => {
       <header>
         <div className="container mx-auto flex items-center justify-between">
           <Logo className="h-24" />
-          {menus.main && <Menu menu={menus.main} />}
+          {menus.main && <Menu menu={menus.main} type="hover" levels={2} />}
         </div>
       </header>
       <main className="flex flex-col flex-1">{children}</main>

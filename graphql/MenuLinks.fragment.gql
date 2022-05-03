@@ -1,0 +1,8 @@
+fragment MenuLinks on MenuLink {
+  label
+  description
+  url {
+    path
+    routed
+  }
+}

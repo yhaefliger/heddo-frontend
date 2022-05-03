@@ -2521,6 +2521,7 @@ export type NodePage = Entity & EntityOwnable & EntityPublishable & EntityRevisi
   fieldContent?: Maybe<Array<Maybe<FieldNodePageFieldContent>>>;
   fieldEdit?: Maybe<FieldNodePageFieldEdit>;
   fieldHeader?: Maybe<FieldNodePageFieldHeader>;
+  fieldMetaTags?: Maybe<Scalars['metatag']>;
   langcode?: Maybe<FieldNodeLangcode>;
   /** Computed menu link for the node (only available during node saving). */
   menuLink?: Maybe<FieldNodeMenuLink>;
@@ -4004,14 +4005,16 @@ export type EntityByPathQueryVariables = Exact<{
 }>;
 
 
-export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename?: 'ConfigPagesSettings' } | { __typename?: 'CropFocalPoint' } | { __typename?: 'File' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTest?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null } | { __typename?: 'ExternalUrl' } | null };
+export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename?: 'ConfigPagesSettings', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'CropFocalPoint', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'File', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'MediaImage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'MenuLinkContentMenuLinkContent', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'NodePage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null, fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTest?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null } | { __typename?: 'ParagraphContainerSimple', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'ParagraphGallery', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'ParagraphTitleText', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'PathAlias', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'ShortcutDefault', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'UnexposedEntity', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename?: 'User', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | null } | { __typename?: 'ExternalUrl' } | null };
 
 export type MenuQueryVariables = Exact<{
   name: Scalars['String'];
 }>;
 
 
-export type MenuQuery = { __typename?: 'Query', menuByName?: { __typename?: 'Menu', links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null, links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null } | null> | null } | null };
+export type MenuQuery = { __typename?: 'Query', menuByName?: { __typename?: 'Menu', links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, links?: Array<{ __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null } | null };
+
+export type MenuLinksFragment = { __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null };
 
 export type NodePageFieldsFragment = { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTest?: string | null, fieldSubtitle?: { __typename?: 'FieldParagraphTitleTextFieldSubtitle', format?: string | null, processed?: string | null } | null } | null } | null> | null, fieldHeader?: { __typename?: 'FieldNodePageFieldHeader', entity?: { __typename?: 'MediaImage', fieldMediaImage?: { __typename?: 'FieldMediaImageFieldMediaImage', derivative?: { __typename?: 'ImageResource', url?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null };
 
@@ -4039,6 +4042,16 @@ export const ConfigPageSettingsFieldsFragmentDoc = gql`
         }
       }
     }
+  }
+}
+    `;
+export const MenuLinksFragmentDoc = gql`
+    fragment MenuLinks on MenuLink {
+  label
+  description
+  url {
+    path
+    routed
   }
 }
     `;
@@ -4094,6 +4107,11 @@ export const EntityByPathDocument = gql`
   route(path: $path) {
     ... on EntityCanonicalUrl {
       entity {
+        entityMetatags {
+          __typename
+          key
+          value
+        }
         ...NodePageFields
       }
     }
@@ -4104,24 +4122,17 @@ export const MenuDocument = gql`
     query Menu($name: String!) {
   menuByName(name: $name) {
     links {
-      label
-      description
-      url {
-        path
-        routed
-      }
+      ...MenuLinks
       links {
-        label
-        description
-        url {
-          path
-          routed
+        ...MenuLinks
+        links {
+          ...MenuLinks
         }
       }
     }
   }
 }
-    `;
+    ${MenuLinksFragmentDoc}`;
 export const PathsDocument = gql`
     query Paths {
   nodeQuery {

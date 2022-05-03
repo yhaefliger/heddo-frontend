@@ -5,7 +5,6 @@ export type Props = {
   entity: NodePage
   children?: React.ReactNode
 }
-
 const NodePage = ({ entity }: Props) => {
   return (
     <div className="node-page">

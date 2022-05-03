@@ -1,24 +1,34 @@
 import { AppMenu, AppMenuLink } from '@/lib/menu'
-import Link from 'next/link'
+import MenuItemsExpanded from './menu/menuitems-expanded'
+import MenuitemsHover from './menu/menuitems-hover'
 
-type MenuLinkProps = {
-  links: AppMenu['links']
-  level: number
+const ItemsComponents = {
+  Hover: MenuitemsHover,
+  Expanded: MenuItemsExpanded,
 }
 
-const MenuLinks = ({ links, level = 0 }: MenuLinkProps) => {
+type MenuLinksProps = {
+  links: AppMenu['links']
+  level: number
+  levels: number
+  type: MenuProps['type']
+}
+export const MenuLinks = ({
+  links,
+  level = 0,
+  levels,
+  type,
+}: MenuLinksProps) => {
   return (
     <>
       {links.map((item: AppMenuLink, index) => {
+        level = level++
+        let Component = ItemsComponents.Expanded
+        if (type == 'hover' && !!item.links && !!item.links.length) {
+          Component = ItemsComponents.Hover
+        }
         return (
-          <li key={index}>
-            <Link href={item.url.path}>{item.label}</Link>
-            {!!item.links && !!item.links.length && (
-              <ul className={`menu-level-${level + 1}`}>
-                <MenuLinks links={item.links} level={level + 1} />
-              </ul>
-            )}
-          </li>
+          <Component item={item} level={level} levels={levels} key={index} />
         )
       })}
     </>
@@ -27,16 +37,17 @@ const MenuLinks = ({ links, level = 0 }: MenuLinkProps) => {
 
 type MenuProps = {
   menu: AppMenu
+  type?: 'hover' | 'expanded'
+  levels?: number
 }
-
-const Menu = ({ menu }: MenuProps) => {
+const Menu = ({ menu, type = 'expanded', levels = 2 }: MenuProps) => {
   if (!menu || !menu.links || !menu.links?.length) {
     return null
   }
 
   return (
-    <ul>
-      <MenuLinks links={menu.links} level={0} />
+    <ul className="flex space-x-4">
+      <MenuLinks links={menu.links} level={1} levels={levels} type={type} />
     </ul>
   )
 }

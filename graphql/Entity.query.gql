@@ -2,6 +2,11 @@ query EntityByPath($path: String!) {
   route(path: $path) {
     ... on EntityCanonicalUrl {
       entity {
+        entityMetatags {
+          __typename
+          key
+          value
+        }
         # Fields fragments depending on node type
         ...NodePageFields
       }
