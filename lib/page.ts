@@ -57,7 +57,6 @@ const getPageData = async (
         break
     }
   }
-
   const global = await getGlobalData(path)
   return {
     entity: entity || {},

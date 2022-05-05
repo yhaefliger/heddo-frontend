@@ -7,11 +7,17 @@ type Props = {
 } & ParagraphComponentProps
 
 const ParagraphTitleText = ({ fields, settings }: Props) => {
-  const { fieldTest: title, ...remainingFields } = fields
-
+  const { fieldTitle, fieldSubtitle, fieldText, ...remainingFields } = fields
   return (
     <div className="paragraph-title-text">
-      {title && <h1>{title}</h1>}
+      {fieldTitle && <h1>{fieldTitle}</h1>}
+      {fieldSubtitle && <div className="subtitle">{fieldSubtitle}</div>}
+      {fieldText && (
+        <div
+          className="prose-sm lg:prose"
+          dangerouslySetInnerHTML={{ __html: fieldText.processed }}
+        />
+      )}
       {remainingFields && (
         <Fields
           fields={remainingFields}

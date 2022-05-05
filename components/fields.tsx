@@ -1,10 +1,7 @@
 import camelcase from 'camelcase'
 import DefaultField from './field/default'
-import FieldSubtitle from './field/field-subtitle'
 
-const FieldsComponents = {
-  FieldSubtitle: FieldSubtitle,
-}
+const FieldsComponents = {}
 
 /**
  * Default field component props

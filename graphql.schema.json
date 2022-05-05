@@ -7389,7 +7389,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "FieldParagraphTitleTextFieldSubtitle",
+        "name": "FieldParagraphTitleTextFieldText",
         "description": null,
         "fields": [
           {
@@ -16943,8 +16943,8 @@
             "deprecationReason": null
           },
           {
-            "name": "fieldTest",
-            "description": null,
+            "name": "fieldClasses",
+            "description": "Extra css classes",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -18527,15 +18527,27 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "OBJECT",
-              "name": "FieldParagraphTitleTextFieldSubtitle",
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "fieldTest",
+            "name": "fieldText",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "FieldParagraphTitleTextFieldText",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fieldTitle",
             "description": null,
             "args": [],
             "type": {

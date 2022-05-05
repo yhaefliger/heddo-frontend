@@ -1,6 +1,8 @@
 fragment ParagraphTitleText on ParagraphTitleText {
-  fieldTest
-  fieldSubtitle{
+  fieldTitle
+  fieldSubtitle
+  fieldText{
+    value
     format
     processed
   }

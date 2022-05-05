@@ -6,6 +6,7 @@ fragment NodePageFields on NodePage {
       uuid
       id
       ...ParagraphTitleText
+      ...ParagraphContainerSimple
     }
   }
   fieldHeader {
