@@ -1,4 +1,5 @@
 import { Entity } from '@/lib/page'
+import Metatags from './metatags'
 import NodePage from './node/node-page'
 
 // Drupal entities __typename to React components
@@ -18,7 +19,12 @@ const Entity = ({ entity, children }: Props) => {
     if (!Component) {
       return null
     }
-    return <Component entity={entity}>{children}</Component>
+    return (
+      <>
+        {entity.metatags && <Metatags metatags={entity.metatags} />}
+        <Component entity={entity}>{children}</Component>
+      </>
+    )
   } else {
     return null
   }
