@@ -1,4 +1,4 @@
-import camelcase from 'camelcase'
+import { camelcase } from '@/lib/utils'
 import DefaultField from './field/default'
 
 const FieldsComponents = {}
@@ -25,11 +25,11 @@ type Props = {
  * Loop through object properties and render fields
  */
 const Fields = ({ fields, parent }: Props) => {
-  const parentType = camelcase(parent.type, { pascalCase: true })
+  const parentType = camelcase(parent.type)
   return (
     <>
       {Object.entries(fields).map(([key, value], index) => {
-        key = camelcase(key, { pascalCase: true })
+        key = camelcase(key)
         let Component = DefaultField
         /**
          * Fields components hierarchy example for field named "subtitle" from paragraph named "title text":

@@ -1225,14 +1225,6 @@ export type FieldNodePageFieldContent = {
   targetRevisionId?: Maybe<Scalars['Int']>;
 };
 
-export type FieldNodePageFieldEdit = {
-  __typename?: 'FieldNodePageFieldEdit';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
 export type FieldNodePageFieldHeader = {
   __typename?: 'FieldNodePageFieldHeader';
   /** The referenced entity */
@@ -2519,7 +2511,6 @@ export type NodePage = Entity & EntityOwnable & EntityPublishable & EntityRevisi
   entityUrl?: Maybe<Url>;
   entityUuid?: Maybe<Scalars['String']>;
   fieldContent?: Maybe<Array<Maybe<FieldNodePageFieldContent>>>;
-  fieldEdit?: Maybe<FieldNodePageFieldEdit>;
   fieldHeader?: Maybe<FieldNodePageFieldHeader>;
   fieldMetaTags?: Maybe<Scalars['metatag']>;
   langcode?: Maybe<FieldNodeLangcode>;

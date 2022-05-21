@@ -7073,53 +7073,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "FieldNodePageFieldEdit",
-        "description": null,
-        "fields": [
-          {
-            "name": "format",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "processed",
-            "description": "The text with the text format applied.",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "value",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "FieldNodePageFieldHeader",
         "description": null,
         "fields": [
@@ -15151,18 +15104,6 @@
                 "name": "FieldNodePageFieldContent",
                 "ofType": null
               }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "fieldEdit",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "FieldNodePageFieldEdit",
-              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null

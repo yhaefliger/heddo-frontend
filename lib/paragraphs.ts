@@ -1,5 +1,5 @@
-import camelcase from 'camelcase'
 import { unserialize } from 'php-serialize'
+import { camelcase } from './utils'
 
 export type ParagraphContent = {
   __typename: null | string
@@ -71,7 +71,7 @@ const buildSections = (field): ParagraphContent[] => {
         // if it has layout param it is a section
         if (settings.layout_paragraphs.layout) {
           type = 'section'
-          layout = camelcase(settings.layout_paragraphs.layout, { pascalCase: true })
+          layout = camelcase(settings.layout_paragraphs.layout)
         }
       }
     }

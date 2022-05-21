@@ -1,3 +1,9 @@
 {
-  "graphql-config.dotEnvPath": "${workspaceFolder}/.env.local"
+  "graphql-config.dotEnvPath": "${workspaceFolder}/.env.local",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#ff1986",
+    "titleBar.inactiveBackground": "#ff19846c",
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#ffffff9d"
+  }
 }
