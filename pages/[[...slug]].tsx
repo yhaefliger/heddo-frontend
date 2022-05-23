@@ -7,6 +7,8 @@ import getPageData, {
 } from '@/lib/page'
 import Entity from '@/components/entity'
 import PageLayout from '@/components/page-layout'
+import buildMetatags from '@/lib/metatags'
+import Head from 'next/head'
 
 interface PageParams extends URLSearchParams {
   slug: string[]

@@ -11,7 +11,7 @@ export type Metatags = {
   }
 }
 
-const buildMetatags = (metatags) => {
+const buildMetatags = (metatags): Metatags => {
   return metatags
     .filter(tag =>  ('__typename' in tag && 'key' in tag && 'value' in tag))
     .reduce((acc, meta) => {

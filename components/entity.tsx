@@ -21,7 +21,7 @@ const Entity = ({ entity, children }: Props) => {
     }
     return (
       <>
-        {entity.metatags && <Metatags metatags={entity.metatags} />}
+        {entity.entityMetatags && <Metatags metatags={entity.entityMetatags} />}
         <Component entity={entity}>{children}</Component>
       </>
     )
