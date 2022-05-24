@@ -11,9 +11,23 @@ export type ApolloRequesterOptions<V, R> =
   | Omit<QueryOptions<V>, 'variables' | 'query'>
   | Omit<MutationOptions<R, V>, 'variables' | 'mutation'>
 
+
+let defaultOptions = {}
+//disable apollo cache in development
+if(process.env.NODE_ENV == 'development') {
+  defaultOptions = {
+    watchQuery: {
+      fetchPolicy: 'network-only',
+    },
+    query: {
+      fetchPolicy: 'network-only',
+    }
+  }
+}
 export const client = new ApolloClient({
   uri: process.env.DRUPAL_GRAPHQL_URL,
   cache: new InMemoryCache(),
+  defaultOptions
 })
 
 const validDocDefOps = ['mutation', 'query', 'subscription']

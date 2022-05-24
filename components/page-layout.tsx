@@ -23,9 +23,8 @@ const PageLayout = ({ children }: Props) => {
       <footer>
         <div className="text-center text-sm p-4">&copy; 2022 Heddo</div>
       </footer>
-
+      {/* prettier-ignore */}
       <style global jsx>{`
-        /* prettier-ignore */
         :root {
           --color-primary: ${PrimaryColor.red}, ${PrimaryColor.green}, ${PrimaryColor.blue};
         }
