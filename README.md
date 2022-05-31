@@ -33,11 +33,5 @@ Main page fields are passed to the page component as props, global components (s
 - GraphQL basic auth option
 - Cypress e2e tests
 - Basic component testing (react testing library)
+- Analytics optional integration
 - Storybook integration (maybe ?)
-
-### Components render
-
-- Menu
-- Paragraph Layouts
-- Paragraph Content
-- CKEditor fields (tailwind typography)
