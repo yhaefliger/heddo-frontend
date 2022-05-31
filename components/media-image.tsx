@@ -1,12 +1,12 @@
 import { FieldMediaImageFieldMediaImage } from '@/graphql/generated/schema'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 
 type Props = {
   entity: FieldMediaImageFieldMediaImage
   className?: string
   alt?: string
   derivative?: string
-}
+} & Partial<ImageProps>
 
 const MediaImage = ({
   entity,
@@ -16,15 +16,15 @@ const MediaImage = ({
   ...imgProps
 }: Props) => {
   const image = entity[derivative] || entity.derivative
-
+  const { width, height, ...imageProps } = imgProps
   return (
     <Image
       src={image.url}
-      width={image.width}
-      height={image.height}
       className={className}
+      width={width || image.width}
+      height={height || image.height}
       alt={alt || entity.alt || ''}
-      {...imgProps}
+      {...imageProps}
     />
   )
 }
