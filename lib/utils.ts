@@ -21,7 +21,7 @@ export const getPaths = async () => {
   return data.nodeQuery?.entities
     ? data.nodeQuery.entities
         .filter((entity) => {
-          return entity.entityUrl.routed
+          return entity && entity.entityUrl?.routed
         })
         .map((entity) => {
           let path: string = entity.entityUrl?.path || '/'

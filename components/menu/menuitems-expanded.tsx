@@ -1,6 +1,6 @@
 import { AppMenuLink } from '@/lib/menu'
-import Link from 'next/link'
 import { MenuLinks } from '../menu'
+import MenuLink from './link'
 
 type Props = {
   item: AppMenuLink
@@ -10,7 +10,7 @@ type Props = {
 const MenuItemsExpanded = ({ item, level, levels }: Props) => {
   return (
     <li>
-      <Link href={item.url.path}>{item.label}</Link>
+      <MenuLink item={item} />
       {!!item.links && !!item.links.length && level < levels && (
         <ul className={`menu-level-${level}`}>
           <MenuLinks

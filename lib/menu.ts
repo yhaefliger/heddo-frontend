@@ -1,13 +1,14 @@
-import {  MenuLink, MenuQuery } from '@/graphql/generated/schema'
+import {  Maybe, MenuLink, MenuQuery, Url } from '@/graphql/generated/schema'
 import requester from './api'
 
 export type AppMenuLink = MenuLink & {
   active?: boolean
   childActive?: boolean
   links?: AppMenuLink[]
+  url?: Maybe<Url> & { __typename?: string }
 }
 
-export type AppMenu = MenuQuery["menuByName"] & {
+export type AppMenu = Omit<MenuQuery["menuByName"], "links"> & {
   links?: AppMenuLink[]
 }
 
@@ -15,7 +16,9 @@ export const setActiveLink = (links, path): AppMenuLink[] => {
   return links.map((link) => {
     let childs,
       childActive = false
-    const active = link.url.path === path
+
+    const linkPath = link.url.path == '/' ? process.env.DRUPAL_HOME : link.url.path
+    const active = linkPath === path
     if (link.links) {
       childs = setActiveLink(link.links, path)
       childActive = childs.some((c) => c.active)

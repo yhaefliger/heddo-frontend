@@ -1,5 +1,5 @@
 query Paths {
-  nodeQuery {
+  nodeQuery(filter: {conditions:[{field: "status", value: "1"}]}) {
     entities {
       entityLabel
       entityType

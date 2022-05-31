@@ -1,13 +1,13 @@
 import { ParagraphContainerSimpleFragment } from '@/graphql/generated/schema'
-import classNames from 'classnames'
 import { ParagraphComponentProps } from '../paragraphs'
+import clsx from 'clsx'
 
 type Props = {
   fields: ParagraphContainerSimpleFragment
 } & ParagraphComponentProps
 
 const ParagraphContainerSimple = ({ fields, children }: Props) => {
-  const className = classNames(
+  const className = clsx(
     'container-simple container mx-auto',
     fields.fieldClasses
   )

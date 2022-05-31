@@ -1,7 +1,7 @@
 import { AppMenuLink } from '@/lib/menu'
-import Link from 'next/link'
 import { useState } from 'react'
 import { MenuLinks } from '../menu'
+import MenuLink from './link'
 
 type Props = {
   item: AppMenuLink
@@ -15,7 +15,7 @@ const MenuitemsHover = ({ item, level, levels }: Props) => {
       onMouseEnter={() => setIsOver(true)}
       onMouseLeave={() => setIsOver(false)}
     >
-      <Link href={item.url.path}>{item.label}</Link>
+      <MenuLink item={item} />
       {isOver && (
         <ul className={`menu-level-${level}`}>
           <MenuLinks
