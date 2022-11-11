@@ -6,20 +6,7 @@ fragment NodePageFields on NodePage {
       uuid
       id
       ...ParagraphTitleText
-      ...ParagraphContainerSimple
     }
   }
-  fieldHeader {
-    entity {
-      ... on MediaImage {
-        fieldMediaImage {
-          derivative(style: THUMBNAIL) {
-            url
-            width
-            height
-          }
-        }
-      }
-    }
-  }
+
 }

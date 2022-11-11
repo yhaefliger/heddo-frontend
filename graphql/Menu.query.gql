@@ -4,9 +4,6 @@ query Menu($name: String!) {
       ... MenuLinks
       links {
         ... MenuLinks
-        links {
-          ... MenuLinks
-        }
       }
     }
   }

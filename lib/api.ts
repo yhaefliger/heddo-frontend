@@ -30,7 +30,7 @@ export const client = new ApolloClient({
   defaultOptions
 })
 
-const validDocDefOps = ['mutation', 'query', 'subscription']
+const validDocDefOps = ['query']
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getSdkApollo = <C>(client: ApolloClient<C>) => {
@@ -38,7 +38,7 @@ export const getSdkApollo = <C>(client: ApolloClient<C>) => {
     doc: DocumentNode,
     variables: V,
     options?: ApolloRequesterOptions<V, R>
-  ): Promise<R> => {
+    ): Promise<R> => {
     // Valid document should contain *single* query or mutation unless it's has a fragment
     if (
       doc.definitions.filter(
@@ -61,60 +61,29 @@ export const getSdkApollo = <C>(client: ApolloClient<C>) => {
       )
     }
 
-    switch (definition.operation) {
-      case 'query': {
-        const response = await client.query<R, V>({
-          query: doc,
-          variables,
-          ...options,
-        })
 
-        if (response.errors || response.error) {
-          if(response.error) {
-            throw new Error(`Apollo query error: ${response.error.message}`);
-          } else if(response.errors){
-            const error = response.errors.map(e => e.message).join(',')
-            throw new Error(`Apollo query errors: ${error}`);
-          } else {
-            throw new Error(`Apollo query error`);
-          }
+      const response = await client.query<R, V>({
+        query: doc,
+        variables,
+        ...options,
+      })
+
+      if (response.errors || response.error) {
+        if(response.error) {
+          throw new Error(`Apollo query error: ${response.error.message}`);
+        } else if(response.errors){
+          const error = response.errors.map(e => e.message).join(',')
+          throw new Error(`Apollo query errors: ${error}`);
+        } else {
+          throw new Error(`Apollo query error`);
         }
-
-        if (response.data === undefined || response.data === null) {
-          throw new Error('No data presented in the GraphQL response')
-        }
-
-        return response.data
       }
-      case 'mutation': {
-        /*
-        const response = await client.mutate<R, V>({
-          mutation: doc,
-          variables,
-          ...options,
-        })
 
-        if (response.errors) {
-          console.log(response.errors)
-          //throw new Error(response.errors[0]);
-        }
-
-        if (response.data === undefined || response.data === null) {
-          throw new Error('No data presented in the GraphQL response')
-        }
-
-        return response.data
-        */
-        throw new Error(
-          'Mutations requests through SDK interface are not supported'
-        )
+      if (response.data === undefined || response.data === null) {
+        throw new Error('No data presented in the GraphQL response')
       }
-      case 'subscription': {
-        throw new Error(
-          'Subscription requests through SDK interface are not supported'
-        )
-      }
-    }
+      return response.data
+
   }
 
   return getSdk(requester)

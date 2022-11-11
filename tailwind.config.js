@@ -1,23 +1,16 @@
-function withOpacity(variableName) {
-  return ({ opacityValue }) => {
-    if (opacityValue) {
-      return `rgba(var(${variableName}), ${opacityValue})`
-    }
-    return `rgb(var(${variableName}))`
-  }
-}
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
-      colors: {
-        primary: withOpacity('--color-primary'),
-      },
+      fontFamily: {
+        sans: ['Jost', 'sans-serif']
+      }
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [],
 }

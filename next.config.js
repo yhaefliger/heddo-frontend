@@ -1,5 +1,7 @@
-module.exports = {
-  images: {
-    domains: [process.env.DRUPAL_IMAGE_DOMAIN],
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: false,
+  swcMinify: true,
 }
+
+module.exports = nextConfig

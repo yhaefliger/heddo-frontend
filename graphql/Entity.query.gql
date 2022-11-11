@@ -2,6 +2,7 @@ query EntityByPath($path: String!) {
   route(path: $path) {
     ... on EntityCanonicalUrl {
       entity {
+        __typename
         entityMetatags {
           __typename
           key

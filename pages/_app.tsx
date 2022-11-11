@@ -1,16 +1,10 @@
-import AppProvider from '@/components/app-context'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
 
-import '../styles/globals.css'
-
-const App = ({ Component, pageProps }) => {
-  //extract global data from page props to assign to app context
-  const { global, ...componentProps } = pageProps
-
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AppProvider value={global}>
-      <Component {...componentProps} />
-    </AppProvider>
-  )
+    <main className="">
+      <Component {...pageProps} />
+    </main>
+  );
 }
-
-export default App

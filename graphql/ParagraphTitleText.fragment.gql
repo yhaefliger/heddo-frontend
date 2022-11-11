@@ -1,6 +1,5 @@
 fragment ParagraphTitleText on ParagraphTitleText {
   fieldTitle
-  fieldSubtitle
   fieldText{
     value
     format

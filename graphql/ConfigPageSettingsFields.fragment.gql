@@ -1,18 +1,3 @@
 fragment ConfigPageSettingsFields on ConfigPagesSettings {
-  fieldPrimaryColor{
-    color
-    opacity
-  }
-  header: fieldDefaultHeader {
-    entity {
-      ... on MediaImage {
-        image: fieldMediaImage {
-          url
-          height
-          width
-          alt
-        }
-      }
-    }
-  }
+  entityLabel
 }

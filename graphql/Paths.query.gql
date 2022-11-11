@@ -1,13 +1,13 @@
 query Paths {
-  nodeQuery(filter: {conditions:[{field: "status", value: "1"}]}) {
-    entities {
-      entityLabel
-      entityType
-      entityBundle
-      entityUrl {
-        path
-        routed
+    nodeQuery(limit: 100, filter: {conditions:[{field: "status", value: "1"}]}) {
+      entities {
+        entityLabel
+        entityType
+        entityBundle
+        entityUrl {
+          path
+          routed
+        }
       }
     }
-  }
 }

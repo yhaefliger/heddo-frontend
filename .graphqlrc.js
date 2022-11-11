@@ -4,7 +4,8 @@ dotenv.config({
   path: __dirname,
 })
 
-const schema = process.env.DRUPAL_GRAPHQL_URL || 'http://heddo.local/graphql'
+const schema =
+  process.env.DRUPAL_GRAPHQL_URL || 'http://physio.local.host/graphql'
 
 module.exports = {
   schema,
