@@ -1,0 +1,4 @@
+fragment ParagraphContainerSimple on ParagraphContainerSimple {
+  id
+  fieldClasses
+}

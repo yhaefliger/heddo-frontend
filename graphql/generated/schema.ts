@@ -161,27 +161,14 @@ export type ConfigPagesSettings = ConfigPages & Entity & {
   entityType?: Maybe<Scalars['String']>;
   entityUrl?: Maybe<Url>;
   entityUuid?: Maybe<Scalars['String']>;
-  fieldAddress?: Maybe<Scalars['String']>;
-  fieldAlerts?: Maybe<Array<Maybe<FieldConfigPagesSettingsFieldAlerts>>>;
-  fieldContactLink?: Maybe<FieldConfigPagesSettingsFieldContactLink>;
-  fieldCopyright?: Maybe<Scalars['String']>;
-  fieldGoogleMapApi?: Maybe<Scalars['String']>;
-  fieldHomepageTitle?: Maybe<Scalars['String']>;
-  fieldName?: Maybe<Scalars['String']>;
-  fieldPhysioContact?: Maybe<Scalars['String']>;
-  fieldPhysioFormations?: Maybe<Scalars['String']>;
-  fieldPhysioSpecialisations?: Maybe<Scalars['String']>;
+  fieldDefaultHeader?: Maybe<FieldConfigPagesSettingsFieldDefaultHeader>;
   fieldPrimaryColor?: Maybe<FieldConfigPagesSettingsFieldPrimaryColor>;
-  fieldSecondaryColor?: Maybe<FieldConfigPagesSettingsFieldSecondaryColor>;
-  fieldSoinReadMore?: Maybe<Scalars['String']>;
-  fieldSoinsOtherText?: Maybe<FieldConfigPagesSettingsFieldSoinsOtherText>;
-  fieldSoinsOtherTitle?: Maybe<Scalars['String']>;
-  fieldSoinsPhysiosText?: Maybe<FieldConfigPagesSettingsFieldSoinsPhysiosText>;
-  fieldSoinsPhysiosTitle?: Maybe<Scalars['String']>;
   /** The config page ID. */
   id?: Maybe<Scalars['Int']>;
   /** A brief description of your config page. */
   label?: Maybe<Scalars['String']>;
+  /** Query reference: @description */
+  queryFieldDefaultHeader?: Maybe<EntityQueryResult>;
   /** Query reference: @description */
   queryType?: Maybe<EntityQueryResult>;
   /** The config page type. */
@@ -229,6 +216,16 @@ export type ConfigPagesSettingsEntityRenderedArgs = {
 /** The '@bundle' bundle of the '@type' entity type. */
 export type ConfigPagesSettingsEntityTranslationArgs = {
   language: LanguageId;
+};
+
+
+/** The '@bundle' bundle of the '@type' entity type. */
+export type ConfigPagesSettingsQueryFieldDefaultHeaderArgs = {
+  filter?: InputMaybe<EntityQueryFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  revisions?: InputMaybe<EntityQueryRevisionMode>;
+  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
 };
 
 
@@ -522,144 +519,6 @@ export type CropFocalPointQueryRevisionUidArgs = {
 
 /** The '@bundle' bundle of the '@type' entity type. */
 export type CropFocalPointQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquare = Crop & Entity & EntityRevisionable & {
-  __typename?: 'CropSquare';
-  /** The crop ID. */
-  cid?: Maybe<Scalars['Int']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  /** ID of entity crop belongs to. */
-  entityIdOfCrop?: Maybe<Scalars['Int']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  /** The type of entity crop belongs to. */
-  entityTypeOfCrop?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  /** The crop height. */
-  height?: Maybe<Scalars['Int']>;
-  /** The node language code. */
-  langcode?: Maybe<FieldCropLangcode>;
-  /** Query reference: @description */
-  queryRevisionUid?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  /** The log entry explaining the changes in this revision. */
-  revisionLog?: Maybe<Scalars['String']>;
-  /** The time that the current revision was created. */
-  revisionTimestamp?: Maybe<Scalars['Timestamp']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  /** The user ID of the author of the current revision. */
-  revisionUid?: Maybe<FieldCropRevisionUid>;
-  /** The crop type. */
-  type?: Maybe<FieldCropType>;
-  /** The URI of the image crop belongs to. */
-  uri?: Maybe<Scalars['String']>;
-  /** The crop UUID. */
-  uuid?: Maybe<Scalars['String']>;
-  /** The crop revision ID. */
-  vid?: Maybe<Scalars['Int']>;
-  /** The crop width. */
-  width?: Maybe<Scalars['Int']>;
-  /** The crop's X coordinate. */
-  x?: Maybe<Scalars['Int']>;
-  /** The crop's Y coordinate. */
-  y?: Maybe<Scalars['Int']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityRenderedArgs = {
-  mode?: InputMaybe<CropDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareQueryRevisionUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type CropSquareQueryTypeArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -1145,54 +1004,17 @@ export type ExternalUrlTranslateArgs = {
   language: LanguageId;
 };
 
-export type FieldConfigPagesSettingsFieldAlerts = {
-  __typename?: 'FieldConfigPagesSettingsFieldAlerts';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
+export type FieldConfigPagesSettingsFieldDefaultHeader = {
+  __typename?: 'FieldConfigPagesSettingsFieldDefaultHeader';
+  /** The referenced entity */
+  entity?: Maybe<Media>;
   targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldConfigPagesSettingsFieldContactLink = {
-  __typename?: 'FieldConfigPagesSettingsFieldContactLink';
-  attribute?: Maybe<Scalars['String']>;
-  options?: Maybe<Scalars['Map']>;
-  title?: Maybe<Scalars['String']>;
-  uri?: Maybe<Scalars['String']>;
-  url?: Maybe<Url>;
-};
-
-
-export type FieldConfigPagesSettingsFieldContactLinkAttributeArgs = {
-  key: Scalars['String'];
 };
 
 export type FieldConfigPagesSettingsFieldPrimaryColor = {
   __typename?: 'FieldConfigPagesSettingsFieldPrimaryColor';
   color?: Maybe<Scalars['String']>;
   opacity?: Maybe<Scalars['Float']>;
-};
-
-export type FieldConfigPagesSettingsFieldSecondaryColor = {
-  __typename?: 'FieldConfigPagesSettingsFieldSecondaryColor';
-  color?: Maybe<Scalars['String']>;
-  opacity?: Maybe<Scalars['Float']>;
-};
-
-export type FieldConfigPagesSettingsFieldSoinsOtherText = {
-  __typename?: 'FieldConfigPagesSettingsFieldSoinsOtherText';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldConfigPagesSettingsFieldSoinsPhysiosText = {
-  __typename?: 'FieldConfigPagesSettingsFieldSoinsPhysiosText';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
 };
 
 /** The config page type. */
@@ -1255,25 +1077,6 @@ export type FieldMediaBundle = {
   /** The referenced entity */
   entity?: Maybe<Entity>;
   targetId?: Maybe<Scalars['String']>;
-};
-
-export type FieldMediaIconFieldMediaSvg = {
-  __typename?: 'FieldMediaIconFieldMediaSvg';
-  /** Alternative image text, for the image's 'alt' attribute. */
-  alt?: Maybe<Scalars['String']>;
-  /** The referenced entity */
-  entity?: Maybe<File>;
-  render?: Maybe<Scalars['String']>;
-  targetId?: Maybe<Scalars['Int']>;
-  /** Image title text, for the image's 'title' attribute. */
-  title?: Maybe<Scalars['String']>;
-};
-
-
-export type FieldMediaIconFieldMediaSvgRenderArgs = {
-  class?: InputMaybe<Scalars['String']>;
-  height?: InputMaybe<Scalars['String']>;
-  width?: InputMaybe<Scalars['String']>;
 };
 
 export type FieldMediaImageFieldMediaImage = {
@@ -1414,6 +1217,13 @@ export type FieldNodePageFieldContent = {
   entity?: Maybe<Paragraph>;
   targetId?: Maybe<Scalars['Int']>;
   targetRevisionId?: Maybe<Scalars['Int']>;
+};
+
+export type FieldNodePageFieldHeader = {
+  __typename?: 'FieldNodePageFieldHeader';
+  /** The referenced entity */
+  entity?: Maybe<Media>;
+  targetId?: Maybe<Scalars['Int']>;
 };
 
 export type FieldNodePageFieldMetaTags = {
@@ -1557,107 +1367,11 @@ export type FieldNodePath = {
   pid?: Maybe<Scalars['Int']>;
 };
 
-export type FieldNodePhysioBody = {
-  __typename?: 'FieldNodePhysioBody';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  /** The summary text with the text format applied. */
-  summaryProcessed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldNodePhysioFieldAlert = {
-  __typename?: 'FieldNodePhysioFieldAlert';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
-  targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodePhysioFieldContent = {
-  __typename?: 'FieldNodePhysioFieldContent';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
-  targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodePhysioFieldFormations = {
-  __typename?: 'FieldNodePhysioFieldFormations';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
-  targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodePhysioFieldHeadPhoto = {
-  __typename?: 'FieldNodePhysioFieldHeadPhoto';
-  /** Alternative image text, for the image's 'alt' attribute. */
-  alt?: Maybe<Scalars['String']>;
-  derivative?: Maybe<ImageResource>;
-  /** The referenced entity */
-  entity?: Maybe<File>;
-  height?: Maybe<Scalars['Int']>;
-  targetId?: Maybe<Scalars['Int']>;
-  /** Image title text, for the image's 'title' attribute. */
-  title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Int']>;
-};
-
-
-export type FieldNodePhysioFieldHeadPhotoDerivativeArgs = {
-  style: ImageStyleId;
-};
-
-export type FieldNodePhysioFieldSpecialisations = {
-  __typename?: 'FieldNodePhysioFieldSpecialisations';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
 /** The user ID of the author of the current revision. */
 export type FieldNodeRevisionUid = {
   __typename?: 'FieldNodeRevisionUid';
   /** The referenced entity */
   entity?: Maybe<User>;
-  targetId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodeSoinBody = {
-  __typename?: 'FieldNodeSoinBody';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  /** The summary text with the text format applied. */
-  summaryProcessed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldNodeSoinFieldContent = {
-  __typename?: 'FieldNodeSoinFieldContent';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
-  targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodeSoinFieldImage = {
-  __typename?: 'FieldNodeSoinFieldImage';
-  /** The referenced entity */
-  entity?: Maybe<Media>;
-  targetId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldNodeSoinFieldPhysios = {
-  __typename?: 'FieldNodeSoinFieldPhysios';
-  /** The referenced entity */
-  entity?: Maybe<Node>;
   targetId?: Maybe<Scalars['Int']>;
 };
 
@@ -1676,79 +1390,11 @@ export type FieldNodeUid = {
   targetId?: Maybe<Scalars['Int']>;
 };
 
-export type FieldParagraphAlertFieldIcon = {
-  __typename?: 'FieldParagraphAlertFieldIcon';
-  /** The referenced entity */
-  entity?: Maybe<Media>;
-  targetId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldParagraphAlertFieldText = {
-  __typename?: 'FieldParagraphAlertFieldText';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldParagraphContainerMapFieldInfoWindow = {
-  __typename?: 'FieldParagraphContainerMapFieldInfoWindow';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldParagraphContainerMapFieldUrl = {
-  __typename?: 'FieldParagraphContainerMapFieldUrl';
-  attribute?: Maybe<Scalars['String']>;
-  options?: Maybe<Scalars['Map']>;
-  title?: Maybe<Scalars['String']>;
-  uri?: Maybe<Scalars['String']>;
-  url?: Maybe<Url>;
-};
-
-
-export type FieldParagraphContainerMapFieldUrlAttributeArgs = {
-  key: Scalars['String'];
-};
-
-export type FieldParagraphFormationLineFieldDescription = {
-  __typename?: 'FieldParagraphFormationLineFieldDescription';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
 export type FieldParagraphGalleryFieldImages = {
   __typename?: 'FieldParagraphGalleryFieldImages';
   /** The referenced entity */
   entity?: Maybe<Media>;
   targetId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldParagraphIconTextItemFieldIcon = {
-  __typename?: 'FieldParagraphIconTextItemFieldIcon';
-  /** The referenced entity */
-  entity?: Maybe<Media>;
-  targetId?: Maybe<Scalars['Int']>;
-};
-
-export type FieldParagraphIconTextItemFieldText = {
-  __typename?: 'FieldParagraphIconTextItemFieldText';
-  format?: Maybe<Scalars['String']>;
-  /** The text with the text format applied. */
-  processed?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
-export type FieldParagraphIconTextListFieldItems = {
-  __typename?: 'FieldParagraphIconTextListFieldItems';
-  /** The referenced entity revision */
-  entity?: Maybe<Paragraph>;
-  targetId?: Maybe<Scalars['Int']>;
-  targetRevisionId?: Maybe<Scalars['Int']>;
 };
 
 /** The paragraphs entity language code. */
@@ -1906,7 +1552,6 @@ export type File = Entity & EntityOwnable & {
   queryUid?: Maybe<EntityQueryResult>;
   /** The status of the file, temporary (FALSE) and permanent (TRUE). */
   status?: Maybe<Scalars['Boolean']>;
-  svgRender?: Maybe<Scalars['String']>;
   /** The user ID of the file. */
   uid?: Maybe<FieldFileUid>;
   /** The URI to access the file (either local or remote). */
@@ -1967,14 +1612,6 @@ export type FileQueryUidArgs = {
   sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
 };
 
-
-/** The '@type' entity type. */
-export type FileSvgRenderArgs = {
-  class?: InputMaybe<Scalars['String']>;
-  height?: InputMaybe<Scalars['String']>;
-  width?: InputMaybe<Scalars['String']>;
-};
-
 /** The available display modes for '@type' entities. */
 export enum FileDisplayModeId {
   /** The 'Jeton (token)' display mode for 'Fichier' entities. */
@@ -1989,36 +1626,12 @@ export type ImageResource = {
 };
 
 export enum ImageStyleId {
-  /** Crop thumbnail */
-  Cropthumbnail = 'CROPTHUMBNAIL',
-  /** Gallery LG */
-  Gallerylg = 'GALLERYLG',
-  /** Gallery Thumb (Focal 400x300) */
-  Gallerythumb = 'GALLERYTHUMB',
-  /** Gallery Thumb Lg */
-  Gallerythumblg = 'GALLERYTHUMBLG',
-  /** Image Header (1250w) */
-  Imageheader1250W = 'IMAGEHEADER1250W',
   /** Large (480×480) */
   Large = 'LARGE',
-  /** Lightbox */
-  Lightbox = 'LIGHTBOX',
-  /** Linkit result thumbnail */
-  Linkitresultthumbnail = 'LINKITRESULTTHUMBNAIL',
   /** Vignette de la médiathèque (220x220) */
   Medialibrary = 'MEDIALIBRARY',
   /** Moyen (220x220) */
   Medium = 'MEDIUM',
-  /** Physio Detail (250x250) */
-  Physiodetail = 'PHYSIODETAIL',
-  /** Physio List (150x150) */
-  Physiolist = 'PHYSIOLIST',
-  /** Physio Mini (100x100) */
-  Physiomini = 'PHYSIOMINI',
-  /** Soin LG (500px large) */
-  Soinlg = 'SOINLG',
-  /** Soin SM (250px height) */
-  Soinsm = 'SOINSM',
   /** Vignette (100x100) */
   Thumbnail = 'THUMBNAIL',
   /** Large (1090) */
@@ -2164,9 +1777,9 @@ export type Media = {
   /** Query reference: @description */
   queryUid?: Maybe<EntityQueryResult>;
   /** Reverse reference: @description */
-  reverseFieldIconParagraph: EntityQueryResult;
+  reverseFieldDefaultHeaderConfigPages: EntityQueryResult;
   /** Reverse reference: @description */
-  reverseFieldImageNode: EntityQueryResult;
+  reverseFieldHeaderNode: EntityQueryResult;
   /** Reverse reference: @description */
   reverseFieldImagesParagraph: EntityQueryResult;
   /** The time that the current revision was created. */
@@ -2270,7 +1883,7 @@ export type MediaQueryUidArgs = {
 
 
 /** The '@type' entity type. */
-export type MediaReverseFieldIconParagraphArgs = {
+export type MediaReverseFieldDefaultHeaderConfigPagesArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -2280,7 +1893,7 @@ export type MediaReverseFieldIconParagraphArgs = {
 
 
 /** The '@type' entity type. */
-export type MediaReverseFieldImageNodeArgs = {
+export type MediaReverseFieldHeaderNodeArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -2307,187 +1920,6 @@ export enum MediaDisplayModeId {
   /** The 'Jeton (token)' display mode for 'Média' entities. */
   Token = 'TOKEN'
 }
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIcon = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Media & {
-  __typename?: 'MediaIcon';
-  bundle?: Maybe<FieldMediaBundle>;
-  /** The time the media item was last edited. */
-  changed?: Maybe<Scalars['Timestamp']>;
-  /** The time the media item was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldMediaSvg?: Maybe<FieldMediaIconFieldMediaSvg>;
-  langcode?: Maybe<FieldMediaLangcode>;
-  mid?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  path?: Maybe<FieldMediaPath>;
-  /** Query reference: @description */
-  queryBundle?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryRevisionUser?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryUid?: Maybe<EntityQueryResult>;
-  /** Reverse reference: @description */
-  reverseFieldIconParagraph: EntityQueryResult;
-  /** Reverse reference: @description */
-  reverseFieldImageNode: EntityQueryResult;
-  /** Reverse reference: @description */
-  reverseFieldImagesParagraph: EntityQueryResult;
-  /** The time that the current revision was created. */
-  revisionCreated?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  /** Briefly describe the changes you have made. */
-  revisionLogMessage?: Maybe<Scalars['String']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  /** The user ID of the author of the current revision. */
-  revisionUser?: Maybe<FieldMediaRevisionUser>;
-  status?: Maybe<Scalars['Boolean']>;
-  /** The thumbnail of the media item. */
-  thumbnail?: Maybe<FieldMediaThumbnail>;
-  /** The user ID of the author. */
-  uid?: Maybe<FieldMediaUid>;
-  uuid?: Maybe<Scalars['String']>;
-  vid?: Maybe<Scalars['Int']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityRenderedArgs = {
-  mode?: InputMaybe<MediaDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconQueryBundleArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconQueryRevisionUserArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconQueryUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconReverseFieldIconParagraphArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconReverseFieldImageNodeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type MediaIconReverseFieldImagesParagraphArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
 
 /** The '@bundle' bundle of the '@type' entity type. */
 export type MediaImage = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Media & {
@@ -2536,9 +1968,9 @@ export type MediaImage = Entity & EntityOwnable & EntityPublishable & EntityRevi
   /** Query reference: @description */
   queryUid?: Maybe<EntityQueryResult>;
   /** Reverse reference: @description */
-  reverseFieldIconParagraph: EntityQueryResult;
+  reverseFieldDefaultHeaderConfigPages: EntityQueryResult;
   /** Reverse reference: @description */
-  reverseFieldImageNode: EntityQueryResult;
+  reverseFieldHeaderNode: EntityQueryResult;
   /** Reverse reference: @description */
   reverseFieldImagesParagraph: EntityQueryResult;
   /** The time that the current revision was created. */
@@ -2642,7 +2074,7 @@ export type MediaImageQueryUidArgs = {
 
 
 /** The '@bundle' bundle of the '@type' entity type. */
-export type MediaImageReverseFieldIconParagraphArgs = {
+export type MediaImageReverseFieldDefaultHeaderConfigPagesArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -2652,7 +2084,7 @@ export type MediaImageReverseFieldIconParagraphArgs = {
 
 
 /** The '@bundle' bundle of the '@type' entity type. */
-export type MediaImageReverseFieldImageNodeArgs = {
+export type MediaImageReverseFieldHeaderNodeArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -3052,8 +2484,6 @@ export type Node = {
   queryType?: Maybe<EntityQueryResult>;
   /** Query reference: @description */
   queryUid?: Maybe<EntityQueryResult>;
-  /** Reverse reference: @description */
-  reverseFieldPhysiosNode: EntityQueryResult;
   /** A flag indicating whether this was a default revision when it was saved. */
   revisionDefault?: Maybe<Scalars['Boolean']>;
   /** Briefly describe the changes you have made. */
@@ -3154,16 +2584,6 @@ export type NodeQueryUidArgs = {
   sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
 };
 
-
-/** The '@type' entity type. */
-export type NodeReverseFieldPhysiosNodeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
 /** The available display modes for '@type' entities. */
 export enum NodeDisplayModeId {
   /** The 'Contenu complet' display mode for 'Contenu' entities. */
@@ -3216,6 +2636,7 @@ export type NodePage = Entity & EntityOwnable & EntityPublishable & EntityRevisi
   entityUrl?: Maybe<Url>;
   entityUuid?: Maybe<Scalars['String']>;
   fieldContent?: Maybe<Array<Maybe<FieldNodePageFieldContent>>>;
+  fieldHeader?: Maybe<FieldNodePageFieldHeader>;
   fieldMetaTags?: Maybe<FieldNodePageFieldMetaTags>;
   langcode?: Maybe<FieldNodeLangcode>;
   /** Computed menu link for the node (only available during node saving). */
@@ -3224,13 +2645,13 @@ export type NodePage = Entity & EntityOwnable & EntityPublishable & EntityRevisi
   path?: Maybe<FieldNodePath>;
   promote?: Maybe<Scalars['Boolean']>;
   /** Query reference: @description */
+  queryFieldHeader?: Maybe<EntityQueryResult>;
+  /** Query reference: @description */
   queryRevisionUid?: Maybe<EntityQueryResult>;
   /** Query reference: @description */
   queryType?: Maybe<EntityQueryResult>;
   /** Query reference: @description */
   queryUid?: Maybe<EntityQueryResult>;
-  /** Reverse reference: @description */
-  reverseFieldPhysiosNode: EntityQueryResult;
   /** A flag indicating whether this was a default revision when it was saved. */
   revisionDefault?: Maybe<Scalars['Boolean']>;
   /** Briefly describe the changes you have made. */
@@ -3303,6 +2724,16 @@ export type NodePageEntityTranslationArgs = {
 
 
 /** The '@bundle' bundle of the '@type' entity type. */
+export type NodePageQueryFieldHeaderArgs = {
+  filter?: InputMaybe<EntityQueryFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  revisions?: InputMaybe<EntityQueryRevisionMode>;
+  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
+};
+
+
+/** The '@bundle' bundle of the '@type' entity type. */
 export type NodePageQueryRevisionUidArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3324,373 +2755,6 @@ export type NodePageQueryTypeArgs = {
 
 /** The '@bundle' bundle of the '@type' entity type. */
 export type NodePageQueryUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePageReverseFieldPhysiosNodeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysio = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Node & {
-  __typename?: 'NodePhysio';
-  body?: Maybe<FieldNodePhysioBody>;
-  /** The time that the node was last edited. */
-  changed?: Maybe<Scalars['Timestamp']>;
-  /** The time that the node was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldAlert?: Maybe<Array<Maybe<FieldNodePhysioFieldAlert>>>;
-  fieldContent?: Maybe<Array<Maybe<FieldNodePhysioFieldContent>>>;
-  fieldDays?: Maybe<Scalars['String']>;
-  fieldEmail?: Maybe<Scalars['String']>;
-  fieldFormations?: Maybe<Array<Maybe<FieldNodePhysioFieldFormations>>>;
-  fieldHeadPhoto?: Maybe<FieldNodePhysioFieldHeadPhoto>;
-  fieldOrder?: Maybe<Scalars['Int']>;
-  fieldPhone?: Maybe<Scalars['String']>;
-  fieldSpecialisations?: Maybe<FieldNodePhysioFieldSpecialisations>;
-  fieldTitre?: Maybe<Scalars['String']>;
-  langcode?: Maybe<FieldNodeLangcode>;
-  /** Computed menu link for the node (only available during node saving). */
-  menuLink?: Maybe<FieldNodeMenuLink>;
-  nid?: Maybe<Scalars['Int']>;
-  path?: Maybe<FieldNodePath>;
-  promote?: Maybe<Scalars['Boolean']>;
-  /** Query reference: @description */
-  queryRevisionUid?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryUid?: Maybe<EntityQueryResult>;
-  /** Reverse reference: @description */
-  reverseFieldPhysiosNode: EntityQueryResult;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  /** Briefly describe the changes you have made. */
-  revisionLog?: Maybe<Scalars['String']>;
-  /** The time that the current revision was created. */
-  revisionTimestamp?: Maybe<Scalars['Timestamp']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  /** The user ID of the author of the current revision. */
-  revisionUid?: Maybe<FieldNodeRevisionUid>;
-  status?: Maybe<Scalars['Boolean']>;
-  sticky?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  type?: Maybe<FieldNodeType>;
-  /** The username of the content author. */
-  uid?: Maybe<FieldNodeUid>;
-  uuid?: Maybe<Scalars['String']>;
-  vid?: Maybe<Scalars['Int']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityRenderedArgs = {
-  mode?: InputMaybe<NodeDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioQueryRevisionUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioQueryUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodePhysioReverseFieldPhysiosNodeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoin = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Node & {
-  __typename?: 'NodeSoin';
-  body?: Maybe<FieldNodeSoinBody>;
-  /** The time that the node was last edited. */
-  changed?: Maybe<Scalars['Timestamp']>;
-  /** The time that the node was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldButtonText?: Maybe<Scalars['String']>;
-  fieldContent?: Maybe<Array<Maybe<FieldNodeSoinFieldContent>>>;
-  fieldImage?: Maybe<FieldNodeSoinFieldImage>;
-  fieldOrder?: Maybe<Scalars['Int']>;
-  fieldPhysios?: Maybe<Array<Maybe<FieldNodeSoinFieldPhysios>>>;
-  langcode?: Maybe<FieldNodeLangcode>;
-  /** Computed menu link for the node (only available during node saving). */
-  menuLink?: Maybe<FieldNodeMenuLink>;
-  nid?: Maybe<Scalars['Int']>;
-  path?: Maybe<FieldNodePath>;
-  promote?: Maybe<Scalars['Boolean']>;
-  /** Query reference: @description */
-  queryFieldImage?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryFieldPhysios?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryRevisionUid?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryUid?: Maybe<EntityQueryResult>;
-  /** Reverse reference: @description */
-  reverseFieldPhysiosNode: EntityQueryResult;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  /** Briefly describe the changes you have made. */
-  revisionLog?: Maybe<Scalars['String']>;
-  /** The time that the current revision was created. */
-  revisionTimestamp?: Maybe<Scalars['Timestamp']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  /** The user ID of the author of the current revision. */
-  revisionUid?: Maybe<FieldNodeRevisionUid>;
-  status?: Maybe<Scalars['Boolean']>;
-  sticky?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  type?: Maybe<FieldNodeType>;
-  /** The username of the content author. */
-  uid?: Maybe<FieldNodeUid>;
-  uuid?: Maybe<Scalars['String']>;
-  vid?: Maybe<Scalars['Int']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityRenderedArgs = {
-  mode?: InputMaybe<NodeDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinQueryFieldImageArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinQueryFieldPhysiosArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinQueryRevisionUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinQueryUidArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type NodeSoinReverseFieldPhysiosNodeArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -3813,257 +2877,6 @@ export type ParagraphQueryTypeArgs = {
 };
 
 /** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlert = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphAlert';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldIcon?: Maybe<FieldParagraphAlertFieldIcon>;
-  fieldStyle?: Maybe<Scalars['String']>;
-  fieldText?: Maybe<FieldParagraphAlertFieldText>;
-  fieldTitle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryFieldIcon?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertQueryFieldIconArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphAlertQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMap = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphContainerMap';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldInfoWindow?: Maybe<FieldParagraphContainerMapFieldInfoWindow>;
-  fieldMapUrl?: Maybe<Scalars['String']>;
-  fieldPaddingBottom?: Maybe<Scalars['String']>;
-  fieldPaddingTop?: Maybe<Scalars['String']>;
-  fieldUrl?: Maybe<FieldParagraphContainerMapFieldUrl>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphContainerMapQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
 export type ParagraphContainerSimple = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
   __typename?: 'ParagraphContainerSimple';
   /** The behavior plugin settings */
@@ -4098,10 +2911,6 @@ export type ParagraphContainerSimple = Entity & EntityOwnable & EntityPublishabl
   entityUrl?: Maybe<Url>;
   entityUuid?: Maybe<Scalars['String']>;
   fieldClasses?: Maybe<Scalars['String']>;
-  fieldFullwidth?: Maybe<Scalars['Boolean']>;
-  fieldId?: Maybe<Scalars['String']>;
-  fieldPaddingBottom?: Maybe<Scalars['String']>;
-  fieldPaddingTop?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
   /** The paragraphs entity language code. */
   langcode?: Maybe<FieldParagraphLangcode>;
@@ -4190,124 +2999,6 @@ export enum ParagraphDisplayModeId {
 }
 
 /** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLine = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphFormationLine';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldDescription?: Maybe<FieldParagraphFormationLineFieldDescription>;
-  fieldYearEnd?: Maybe<Scalars['String']>;
-  fieldYearStart?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphFormationLineQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
 export type ParagraphGallery = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
   __typename?: 'ParagraphGallery';
   /** The behavior plugin settings */
@@ -4342,7 +3033,6 @@ export type ParagraphGallery = Entity & EntityOwnable & EntityPublishable & Enti
   entityUrl?: Maybe<Url>;
   entityUuid?: Maybe<Scalars['String']>;
   fieldImages?: Maybe<Array<Maybe<FieldParagraphGalleryFieldImages>>>;
-  fieldLightbox?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['Int']>;
   /** The paragraphs entity language code. */
   langcode?: Maybe<FieldParagraphLangcode>;
@@ -4429,603 +3119,6 @@ export type ParagraphGalleryQueryFieldImagesArgs = {
 
 /** The '@bundle' bundle of the '@type' entity type. */
 export type ParagraphGalleryQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItem = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphIconTextItem';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldIcon?: Maybe<FieldParagraphIconTextItemFieldIcon>;
-  fieldText?: Maybe<FieldParagraphIconTextItemFieldText>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryFieldIcon?: Maybe<EntityQueryResult>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemQueryFieldIconArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextItemQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextList = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphIconTextList';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldItems?: Maybe<Array<Maybe<FieldParagraphIconTextListFieldItems>>>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphIconTextListQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysios = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphPhysios';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldDisplay?: Maybe<Scalars['String']>;
-  fieldSubtitle?: Maybe<Scalars['String']>;
-  fieldTitle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPhysiosQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestations = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphPrestations';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldSubtitle?: Maybe<Scalars['String']>;
-  fieldTitle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphPrestationsQueryTypeArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitle = Entity & EntityOwnable & EntityPublishable & EntityRevisionable & Paragraph & {
-  __typename?: 'ParagraphTitle';
-  /** The behavior plugin settings */
-  behaviorSettings?: Maybe<Scalars['String']>;
-  /** The time that the Paragraph was created. */
-  created?: Maybe<Scalars['Timestamp']>;
-  /** A flag indicating whether this is the default translation. */
-  defaultLangcode?: Maybe<Scalars['Boolean']>;
-  entityAccess?: Maybe<Scalars['Boolean']>;
-  entityBundle?: Maybe<Scalars['String']>;
-  entityChanged?: Maybe<Scalars['String']>;
-  entityCreated?: Maybe<Scalars['String']>;
-  entityId?: Maybe<Scalars['String']>;
-  entityLabel?: Maybe<Scalars['String']>;
-  entityLanguage?: Maybe<Language>;
-  /** Loads metatags for the entity. */
-  entityMetatags?: Maybe<Array<Maybe<Metatag>>>;
-  entityOwner?: Maybe<User>;
-  entityPublished?: Maybe<Scalars['Boolean']>;
-  entityQueryExclusive: EntityQueryResult;
-  /** Renders '@type' entities in the given view mode. */
-  entityRendered?: Maybe<Scalars['String']>;
-  entityRevisions: EntityQueryResult;
-  /**
-   * Loads schema.org defined metatags for the
-   *  *   entity
-   */
-  entitySchemaMetatags?: Maybe<Scalars['String']>;
-  entityTranslation?: Maybe<Entity>;
-  entityTranslations?: Maybe<Array<Maybe<Entity>>>;
-  entityType?: Maybe<Scalars['String']>;
-  entityUrl?: Maybe<Url>;
-  entityUuid?: Maybe<Scalars['String']>;
-  fieldSubtitle?: Maybe<Scalars['String']>;
-  fieldTitle?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  /** The paragraphs entity language code. */
-  langcode?: Maybe<FieldParagraphLangcode>;
-  /** The entity parent field name to which this entity is referenced. */
-  parentFieldName?: Maybe<Scalars['String']>;
-  /** The ID of the parent entity of which this entity is referenced. */
-  parentId?: Maybe<Scalars['String']>;
-  /** The entity parent type to which this entity is referenced. */
-  parentType?: Maybe<Scalars['String']>;
-  /** Query reference: @description */
-  queryType?: Maybe<EntityQueryResult>;
-  /** A flag indicating whether this was a default revision when it was saved. */
-  revisionDefault?: Maybe<Scalars['Boolean']>;
-  revisionId?: Maybe<Scalars['Int']>;
-  /** Indicates if the last edit of a translation belongs to current revision. */
-  revisionTranslationAffected?: Maybe<Scalars['Boolean']>;
-  status?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FieldParagraphType>;
-  uuid?: Maybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityAccessArgs = {
-  operation: Scalars['String'];
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityChangedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityCreatedArgs = {
-  format?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityQueryExclusiveArgs = {
-  bundles?: InputMaybe<EntityQueryBundleMode>;
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  revisions?: InputMaybe<EntityQueryRevisionMode>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityRenderedArgs = {
-  mode?: InputMaybe<ParagraphDisplayModeId>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityRevisionsArgs = {
-  filter?: InputMaybe<EntityQueryFilterInput>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Array<InputMaybe<EntityQuerySortInput>>>;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleEntityTranslationArgs = {
-  language: LanguageId;
-};
-
-
-/** The '@bundle' bundle of the '@type' entity type. */
-export type ParagraphTitleQueryTypeArgs = {
   filter?: InputMaybe<EntityQueryFilterInput>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -6019,7 +4112,7 @@ export type ConfigPageQueryVariables = Exact<{
 }>;
 
 
-export type ConfigPageQuery = { __typename?: 'Query', configPagesQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', entityLabel?: string | null } | { __typename?: 'CropFocalPoint' } | { __typename?: 'CropSquare' } | { __typename?: 'File' } | { __typename?: 'MediaIcon' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage' } | { __typename?: 'NodePhysio' } | { __typename?: 'NodeSoin' } | { __typename?: 'ParagraphAlert' } | { __typename?: 'ParagraphContainerMap' } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphFormationLine' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphIconTextItem' } | { __typename?: 'ParagraphIconTextList' } | { __typename?: 'ParagraphPhysios' } | { __typename?: 'ParagraphPrestations' } | { __typename?: 'ParagraphTitle' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null> | null } | null };
+export type ConfigPageQuery = { __typename?: 'Query', configPagesQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', entityLabel?: string | null } | { __typename?: 'CropFocalPoint' } | { __typename?: 'File' } | { __typename?: 'MediaImage' } | { __typename?: 'MenuLinkContentMenuLinkContent' } | { __typename?: 'NodePage' } | { __typename?: 'ParagraphContainerSimple' } | { __typename?: 'ParagraphGallery' } | { __typename?: 'ParagraphTitleText' } | { __typename?: 'PathAlias' } | { __typename?: 'ShortcutDefault' } | { __typename?: 'UnexposedEntity' } | { __typename?: 'User' } | null> | null } | null };
 
 export type ConfigPageSettingsFieldsFragment = { __typename?: 'ConfigPagesSettings', entityLabel?: string | null };
 
@@ -6028,7 +4121,7 @@ export type EntityByPathQueryVariables = Exact<{
 }>;
 
 
-export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename: 'ConfigPagesSettings', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'CropFocalPoint', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'CropSquare', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'File', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'MediaIcon', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'MediaImage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'MenuLinkContentMenuLinkContent', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'NodePage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null, fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphAlert', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphContainerMap', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphFormationLine', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphIconTextItem', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphIconTextList', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphPhysios', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphPrestations', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitle', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null } | null } | null> | null } | { __typename: 'NodePhysio', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'NodeSoin', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphAlert', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphContainerMap', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphContainerSimple', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphFormationLine', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphGallery', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphIconTextItem', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphIconTextList', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphPhysios', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphPrestations', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphTitle', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphTitleText', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'PathAlias', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ShortcutDefault', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'UnexposedEntity', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'User', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | null } | { __typename?: 'ExternalUrl' } | null };
+export type EntityByPathQuery = { __typename?: 'Query', route?: { __typename?: 'DefaultInternalUrl' } | { __typename?: 'EntityCanonicalUrl', entity?: { __typename: 'ConfigPagesSettings', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'CropFocalPoint', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'File', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'MediaImage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'MenuLinkContentMenuLinkContent', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'NodePage', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null, fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTitle?: string | null, fieldSubtitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null } | null } | null> | null } | { __typename: 'ParagraphContainerSimple', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphGallery', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ParagraphTitleText', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'PathAlias', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'ShortcutDefault', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'UnexposedEntity', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | { __typename: 'User', entityMetatags?: Array<{ __typename: 'MetaHttpEquiv', key?: string | null, value?: any | null } | { __typename: 'MetaItemProp', key?: string | null, value?: any | null } | { __typename: 'MetaLink', key?: string | null, value?: any | null } | { __typename: 'MetaLinkHreflang', key?: string | null, value?: any | null } | { __typename: 'MetaProperty', key?: string | null, value?: any | null } | { __typename: 'MetaValue', key?: string | null, value?: any | null } | null> | null } | null } | { __typename?: 'ExternalUrl' } | null };
 
 export type MenuQueryVariables = Exact<{
   name: Scalars['String'];
@@ -6039,14 +4132,16 @@ export type MenuQuery = { __typename?: 'Query', menuByName?: { __typename?: 'Men
 
 export type MenuLinksFragment = { __typename?: 'MenuLink', label?: string | null, description?: string | null, url?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null };
 
-export type NodePageFieldsFragment = { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphAlert', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphContainerMap', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphFormationLine', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphIconTextItem', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphIconTextList', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphPhysios', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphPrestations', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitle', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null } | null } | null> | null };
+export type NodePageFieldsFragment = { __typename?: 'NodePage', fieldContent?: Array<{ __typename?: 'FieldNodePageFieldContent', entity?: { __typename: 'ParagraphContainerSimple', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphGallery', behaviorSettings?: string | null, uuid?: string | null, id?: number | null } | { __typename: 'ParagraphTitleText', behaviorSettings?: string | null, uuid?: string | null, id?: number | null, fieldTitle?: string | null, fieldSubtitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null } | null } | null> | null };
 
-export type ParagraphTitleTextFragment = { __typename?: 'ParagraphTitleText', fieldTitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null };
+export type ParagraphContainerSimpleFragment = { __typename?: 'ParagraphContainerSimple', id?: number | null, fieldClasses?: string | null };
+
+export type ParagraphTitleTextFragment = { __typename?: 'ParagraphTitleText', fieldTitle?: string | null, fieldSubtitle?: string | null, fieldText?: { __typename?: 'FieldParagraphTitleTextFieldText', value?: string | null, format?: string | null, processed?: string | null } | null };
 
 export type PathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PathsQuery = { __typename?: 'Query', nodeQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'CropFocalPoint', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'CropSquare', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'File', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'MediaIcon', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'MediaImage', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'MenuLinkContentMenuLinkContent', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'NodePage', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'NodePhysio', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'NodeSoin', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphAlert', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphContainerMap', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphContainerSimple', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphFormationLine', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphGallery', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphIconTextItem', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphIconTextList', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphPhysios', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphPrestations', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphTitle', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphTitleText', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'PathAlias', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ShortcutDefault', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'UnexposedEntity', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'User', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null } | null };
+export type PathsQuery = { __typename?: 'Query', nodeQuery?: { __typename?: 'EntityQueryResult', entities?: Array<{ __typename?: 'ConfigPagesSettings', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'CropFocalPoint', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'File', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'MediaImage', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'MenuLinkContentMenuLinkContent', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'NodePage', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphContainerSimple', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphGallery', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ParagraphTitleText', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'PathAlias', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'ShortcutDefault', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'UnexposedEntity', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | { __typename?: 'User', entityLabel?: string | null, entityType?: string | null, entityBundle?: string | null, entityUrl?: { __typename?: 'DefaultInternalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'EntityCanonicalUrl', path?: string | null, routed?: boolean | null } | { __typename?: 'ExternalUrl', path?: string | null, routed?: boolean | null } | null } | null> | null } | null };
 
 export const ConfigPageSettingsFieldsFragmentDoc = gql`
     fragment ConfigPageSettingsFields on ConfigPagesSettings {
@@ -6066,6 +4161,7 @@ export const MenuLinksFragmentDoc = gql`
 export const ParagraphTitleTextFragmentDoc = gql`
     fragment ParagraphTitleText on ParagraphTitleText {
   fieldTitle
+  fieldSubtitle
   fieldText {
     value
     format
@@ -6086,6 +4182,12 @@ export const NodePageFieldsFragmentDoc = gql`
   }
 }
     ${ParagraphTitleTextFragmentDoc}`;
+export const ParagraphContainerSimpleFragmentDoc = gql`
+    fragment ParagraphContainerSimple on ParagraphContainerSimple {
+  id
+  fieldClasses
+}
+    `;
 export const ConfigPageDocument = gql`
     query ConfigPage($type: String!) {
   configPagesQuery(

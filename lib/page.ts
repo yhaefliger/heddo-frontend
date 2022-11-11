@@ -32,12 +32,10 @@ export type PageProps = {
 };
 
 const getPageData = async (
-  context: PageContext,
   path: string
 ): Promise<PageProps> => {
   let entity: Entity;
 
-  //const path = getPathFromContext(context)
   const data = await requester.EntityByPath({ path });
 
   if (data.route?.__typename == "EntityCanonicalUrl" && data.route.entity) {
