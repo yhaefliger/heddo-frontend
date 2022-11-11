@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPageContext } from "next";
 import { getPaths } from '@/lib/utils'
 import getPageData, { PageContext, PageProps } from "@/lib/page";
 import Layout from "@/components/layout";
+import Entity from "@/components/entity";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getPaths()
@@ -29,12 +30,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   }
 }
 
-export default function Page() {
+export default function Page({ entity }) {
   return (
     <Layout>
-      <div>
-        <h1>Hello world</h1>
-      </div>
+      <Entity entity={entity} />
     </Layout>
   );
 }
