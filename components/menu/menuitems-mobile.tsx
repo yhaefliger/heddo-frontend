@@ -11,10 +11,10 @@ type Props = {
 }
 const MenuItemsMobile = ({ item, level, levels, handleClick }: Props) => {
   const className = clsx('block px-4 text-center', {
-    'py-6 uppercase text-sm font-bold tracking-wider': level == 1,
-    'pb-4': level == 1 && !!item.links.length,
-    'py-2 font-medium': level > 1,
-    'text-secondary': item.active || item.childActive,
+    'root-menu': level == 1,
+    'with-submenu': item.links.length,
+    'submenu': level > 1,
+    'is-active': item.active || item.childActive,
   })
 
   return (
@@ -23,7 +23,7 @@ const MenuItemsMobile = ({ item, level, levels, handleClick }: Props) => {
         {item.label}
       </MenuLink>
       {!!item.links && !!item.links.length && level < levels && (
-        <ul className={`menu-level-${level} py-4 bg-primary/10`}>
+        <ul className={`menu-level-${level} py-4`}>
           <MenuLinks
             links={item.links}
             level={level + 1}
