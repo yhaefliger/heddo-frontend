@@ -1,7 +1,7 @@
 import { Maybe, Scalars, Url } from '@/graphql/generated/schema'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { forwardRef, LegacyRef } from 'react'
+import { forwardRef } from 'react'
 
 type Props = {
   item: {
@@ -18,8 +18,7 @@ type Props = {
 }
 const AppLink = forwardRef(
   (
-    { item, className, children, onClick, ...rest }: Props,
-    ref: LegacyRef<HTMLAnchorElement>
+    { item, className, children, onClick, ...rest }: Props
   ) => {
     const content = children || item.title || ''
 
@@ -32,12 +31,16 @@ const AppLink = forwardRef(
     //routed link means we can use next/link for internal processing
     if (item.url.routed) {
       return (
-        <Link href={item.url.path}>
-          <a ref={ref} className={className} onClick={onClick} {...rest}>
-            {content}
-          </a>
-        </Link>
-      )
+        (<Link
+          href={item.url.path}
+          className={className}
+          onClick={onClick}
+          {...rest}>
+
+          {content}
+
+        </Link>)
+      );
     }
 
     // check if link to external site or drupal instance

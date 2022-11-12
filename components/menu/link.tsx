@@ -1,7 +1,7 @@
 import { AppMenuLink } from '@/lib/menu'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { forwardRef, LegacyRef } from 'react'
+import { forwardRef } from 'react'
 
 type Props = {
   item: AppMenuLink
@@ -11,8 +11,7 @@ type Props = {
 }
 const MenuLink = forwardRef(
   (
-    { item, className, children, onClick, ...rest }: Props,
-    ref: LegacyRef<HTMLAnchorElement>
+    { item, className, children, onClick, ...rest }: Props
   ) => {
     const content = children || item.label || ''
 
@@ -27,12 +26,16 @@ const MenuLink = forwardRef(
     //routed link means we can use next/link for internal processing
     if (item.url.routed) {
       return (
-        <Link href={item.url.path}>
-          <a ref={ref} className={className} onClick={onClick} {...rest}>
-            {content}
-          </a>
-        </Link>
-      )
+        (<Link
+          href={item.url.path}
+          className={className}
+          onClick={onClick}
+          {...rest}>
+
+          {content}
+
+        </Link>)
+      );
     }
 
     // check if link to external site or drupal instance
