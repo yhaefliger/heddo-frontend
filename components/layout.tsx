@@ -1,5 +1,6 @@
 import { ReactNode, useState } from 'react'
 import { useAppContext } from './app-context'
+import Menu from './menu'
 
 
 type Props = {
@@ -7,14 +8,20 @@ type Props = {
 }
 
 const Layout = ({ children }: Props) => {
-  /*const { settings, menus, homepage } = useAppContext()
+  const { menus } = useAppContext()
 
-  const [isHomepage, setIsHomepage] = useState(homepage)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)*/
 
   return (
     <>
+      <header>
+          <nav>
+            <Menu menu={menus.main} className="main-menu" type="hover" levels={2} />
+          </nav>
+      </header>
       <main>{children}</main>
+      <footer>
+        <p>&copy; 2022 Heddo CMS.</p>
+      </footer>
     </>
   )
 }

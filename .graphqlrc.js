@@ -5,7 +5,7 @@ dotenv.config({
 })
 
 const schema =
-  process.env.DRUPAL_GRAPHQL_URL || 'http://heddo.ddev.site/graphql'
+  process.env.DRUPAL_GRAPHQL_URL || 'http://sara.local.host/graphql'
 
 module.exports = {
   schema,
